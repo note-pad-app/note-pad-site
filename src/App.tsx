@@ -19,6 +19,7 @@ import Home from "./pages/Home"
 import Profile from "./pages/Profile"
 import Login from "./pages/Login"
 import SignUp from "./pages/SignUp"
+import Varification from "./pages/Varification"
 // redux 
 import {useSelector} from 'react-redux'
 import {useDarkMode} from './hooks/useDarkMode'
@@ -51,6 +52,7 @@ function App() {
         <Route path="profile" element={<Profile />} />
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<SignUp />} />
+        <Route path="varify" element={<Varification/>} />
         <Route path="*" element={<Notfound />} />
       </Route>
     </Routes>

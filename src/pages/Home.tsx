@@ -18,8 +18,8 @@ function Home() {
                         </Link>
                     </div>
                     <div className='home-card rounded p-4 shadow-lg text-center bg-light col-11 mt-4 col col-sm-11 col-md-5 mx-4'>
-                        <p className="fs-4">Let's write some notes</p>
-                        <Link to="/notes">
+                        <p className="fs-4">Let's add some todos</p>
+                        <Link to="/todos">
                             <img src={todoImg} className="img-fluid mt-2"></img>
                         </Link>
                     </div>

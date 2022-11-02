@@ -1,8 +1,13 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as yup from 'yup'
 import { Link } from 'react-router-dom'
+import { useMutation } from 'react-query'
+import * as api from '../api'
+import {useNavigate} from 'react-router-dom'
 
 function SignUp() {
+    const navigate = useNavigate()
+
     const initailValues = { username: '', email: '', password: '', confirm: '' };
     const loginSchema = yup.object({
         username: yup.string().required().min(3),
@@ -10,8 +15,11 @@ function SignUp() {
         password: yup.string().required().min(4),
         confirm: yup.string().label('confirm password').required().oneOf([yup.ref('password'), null], 'password must match!')
     })
-    const onSubmit = (values: Object) => {
-        console.log(values)
+
+    const register = useMutation(api.register)
+
+    const onSubmit = (values: any) => {
+        register.mutate(values, {onSuccess: ()=> navigate('/varify')});
     }
     return (
         <div className='container'>
@@ -52,7 +60,9 @@ function SignUp() {
                             <ErrorMessage name="confirm"/>
                         </div>
                         <div className="text-center mt-2">
-                            <button type="submit" className='btn btn-info text-white mt-2 px-4 align-self-center'>Sign Up</button>
+                            <button type="submit" className='btn btn-info text-white mt-2 px-4 align-self-center'>
+                                {register.isLoading ? 'Sign Up...': 'Sign Up'}
+                            </button>
                         </div>
                         <Link to="/login" className="text-info text-decoration-none d-block text-center fs-4 p-3">have an acount</Link>
                     </Form>
