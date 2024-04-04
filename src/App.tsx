@@ -21,41 +21,41 @@ import Login from "./pages/Login"
 import SignUp from "./pages/SignUp"
 import Varification from "./pages/Varification"
 // redux 
-import {useSelector} from 'react-redux'
-import {useDarkMode} from './hooks/useDarkMode'
+import { useSelector } from 'react-redux'
+import { useDarkMode } from './hooks/useDarkMode'
 
 function App() {
-  useSelector((state: any)=> state.theme.value)
+  useSelector((state: any) => state.theme.value)
   const getCookie = useDarkMode('dark')
   return (
-    <div className={`${getCookie?'dark':'light'}`}>
-    <Routes>
-      <Route path="/" element={<MainHeader />}>
-        <Route index element={<Home />} />
-        <Route path="notes" element={<NoteSidebar />}>
-          <Route index element={<Allnotes />} />
-          <Route path=":catg" element={<Allnotes />} />
-          <Route path="note/:id" element={<Viewnote />} />
-          <Route path="deletedNotes" element={<Delnotes />} />
-          <Route path="addNote" element={<Addnote />} />
-          <Route path="editNoteCats" element={<EditNoteCats />} />
-          <Route path="favNotes" element={<Favnotes />} />
+    <div className={`${getCookie ? 'dark' : 'light'}`}>
+      <Routes>
+        <Route path="/" element={<MainHeader />}>
+          <Route index element={<Home />} />
+          <Route path="notes" element={<NoteSidebar />}>
+            <Route index element={<Allnotes />} />
+            <Route path=":catg" element={<Allnotes />} />
+            <Route path="note/:id" element={<Viewnote />} />
+            <Route path="deletedNotes" element={<Delnotes />} />
+            <Route path="addNote" element={<Addnote />} />
+            <Route path="editNoteCats" element={<EditNoteCats />} />
+            <Route path="favNotes" element={<Favnotes />} />
+          </Route>
+          <Route path="/todos" element={<TodoSidbar />}>
+            <Route index element={<Alltodos />} />
+            <Route path=":catg" element={<Alltodos />} />
+            <Route path="todo/:id" element={<Viewtodo />} />
+            <Route path="deletedTodos" element={<Deltodos />} />
+            <Route path="editTodoCats" element={<EditTodoCats />} />
+          </Route>
+          <Route path="settings" element={<Setting />} />
+          <Route path="profile" element={<Profile />} />
+          <Route path="*" element={<Notfound />} />
         </Route>
-        <Route path="/todos" element={<TodoSidbar />}>
-          <Route index element={<Alltodos />} />
-          <Route path=":catg" element={<Alltodos />} />
-          <Route path="todo/:id" element={<Viewtodo />} />
-          <Route path="deletedTodos" element={<Deltodos />} />
-          <Route path="editTodoCats" element={<EditTodoCats />} />
-        </Route>
-        <Route path="settings" element={<Setting />} />
-        <Route path="profile" element={<Profile />} />
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<SignUp />} />
-        <Route path="varify" element={<Varification/>} />
-        <Route path="*" element={<Notfound />} />
-      </Route>
-    </Routes>
+        <Route path="varify" element={<Varification />} />
+      </Routes>
     </div>
   )
 }

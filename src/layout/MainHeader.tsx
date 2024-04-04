@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Link, Outlet } from 'react-router-dom'
 import DropDown from 'react-bootstrap/Dropdown'
 import { useLocation } from 'react-router-dom'
-import logo from '../assets/images/logo.png'
+import logo from '/logo.png'
 
 const MainHeader = () => {
     const location = useLocation();
@@ -14,41 +14,29 @@ const MainHeader = () => {
                     <div className="container-fluid">
                         {
                             location.pathname.includes('notes') && <button
-                                className="navbar-toggler  border-0 btn-outline-light"
-                                type="button"
+                                id="navbar-toggler"
                                 onClick={() => setOpen(!open)}
                             >
                                 {open ? <i className="fas fa-close"></i> : <i className="fas fa-bars"></i>}
                             </button> || location.pathname.includes('todos') && <button
-                                className="navbar-toggler me-3 border-0"
-                                type="button"
+                                id="navbar-toggler"
                                 onClick={() => setOpen(!open)}
                             >
                                 {open ? <i className="fas fa-close"></i> : <i className="fas fa-bars"></i>}
                             </button> || ''
                         }
                         <div className='d-flex align-items-center m-0'>
-                            <Link className="navbar-brand p-0" to="/">
-                                <img src={logo} alt="logo" style={{width: '50px', margin: '0'}}/>
+                            <Link className="navbar-brand p-0 m-0 me-2" to="/">
+                                <img src={logo} alt="logo" className='logo'/>
+                            </Link>
+                            <Link className="navbar-brand p-0 nav-item m-0 me-2" to="/notes">
+                                Notes
+                            </Link>
+                            <Link className="navbar-brand p-0 nav-item m-0" to="/todos">
+                                Todos
                             </Link>
                         </div>
                         <ul className="navbar-nav ms-auto d-flex flex-row">
-                            <DropDown>
-                                <DropDown.Toggle variant='defualt' id="dropdown_menu"
-                                    className="hidden-arrow border-0 fs-5"
-                                >
-                                    {location.pathname.includes('notes') && 'Notes' || location.pathname.includes('todos') && 'Todos' || 'Notes'}
-                                </DropDown.Toggle>
-                                <DropDown.Menu>
-                                    <DropDown.Item>
-                                        <Link to="/notes" className='text-decoration-none text-black d-block'>Notes</Link>
-                                    </DropDown.Item>
-                                    <DropDown.Divider />
-                                    <DropDown.Item>
-                                        <Link to="/todos" className='text-decoration-none text-black d-block'>Todos</Link>
-                                    </DropDown.Item>
-                                </DropDown.Menu>
-                            </DropDown>
                             <div className='d-flex align-items-center mx-2'>
                                 <Link to="" className='bell'>
                                     <i className='fas fa-bell'></i>

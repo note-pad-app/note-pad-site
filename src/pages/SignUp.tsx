@@ -34,42 +34,37 @@ function SignUp() {
                 >
                     <Form>
                         <div className='mt-2 d-flex justify-content-start align-items-center'>
-                            <i className='fas fa-user fs-4 m-3'></i>
                             <Field type="text" name="username" placeholder='username' className='form-control' />
                         </div>
                         <div className='mx-5 text-danger text-center'>
                             <ErrorMessage name="username" />
                         </div>
-                        <div className='mt-2 d-flex justify-content-start align-items-center'>
-                            <i className='fas fa-envelope fs-4 m-3'></i>
+                        <div className='mt-3 d-flex justify-content-start align-items-center'>
                             <Field type="text" name="email" placeholder='E-mail' className='form-control' />
                         </div>
                         <div className='mx-5 text-danger text-center'>
                             <ErrorMessage name="email" />
                         </div>
-                        <div className='mt-2 d-flex justify-content-start align-items-center'>
-                            <i className='fas fa-lock fs-4 m-3'></i>
+                        <div className='mt-3 d-flex justify-content-start align-items-center'>
                             <Field type="password" name="password" placeholder='password' className='form-control' />
                         </div>
                         <div className='mx-5 text-danger text-center'>
                             <ErrorMessage name="password" />
                         </div>
-                        <div className='mt-2 d-flex justify-content-start align-items-center'>
-                            <i className='fas fa-unlock fs-4 m-3'></i>
+                        <div className='mt-3 d-flex justify-content-start align-items-center'>
                             <Field type="password" name="confirm" placeholder='confirm password' className='form-control' />
                         </div>
                         <div className='mx-5 text-danger text-center'>
                             <ErrorMessage name="confirm" />
                         </div>
-                        <div className="text-center mt-2">
-                            <button type="submit" className='btn btn-info text-white mt-2 px-4 align-self-center'>
+                        <div className="text-center mt-3">
+                            <button type="submit" className='btn btn-primary text-white mt-3 px-4 align-self-center'>
                                 {register.isLoading ? 'Sign Up...' : 'Sign Up'}
                             </button>
                         </div>
-                        <Link to="/login" className="text-info text-decoration-none d-block text-center fs-4 p-3">have an acount</Link>
-                        {verfiyMessage ?
-                            <h5 className='text-center alert alert-success'>Check your email we sent verification link</h5>
-                            : null}
+                        <div className='text-center mt-4'>
+                            <Link to="/login" className="text-info text-center fs-5 p-3">have an acount</Link>
+                        </div>
                     </Form>
                 </Formik>
             </div>
