@@ -1,251 +1,390 @@
 :root {
-   --dark: rgb(49, 49, 49);
-   --black: rgb(24, 24, 24);
-   --blue: rgb(56, 135, 255);
-   --light: #fbfbfb;
-   --darkgray: rgb(112, 112, 112);
+  --dark: rgb(49, 49, 49);
+  --black: rgb(24, 24, 24);
+  --blue: rgb(56, 135, 255);
+  --light: #fbfbfb;
+  --darkgray: rgb(112, 112, 112);
+}
+
+body:has(.light) {
+  background-color: var(--light);
+}
+
+body:has(.dark) {
+  background-color: var(--dark);
+}
+
+main {
+  margin-top: 58px;
+}
+
+.login-card,
+.signup-card {
+  margin-top: 160px !important;
+}
+
+/* navbar */
+.navbar {
+  border-bottom: 1px solid #eeeeee;
+}
+
+.dark .navbar {
+  border-bottom: 1px solid var(--darkgray);
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  padding-top: 70px;
+  box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
+  width: 240px;
+  z-index: 1000;
+}
+
+.sidebar-sticky {
+  position: relative;
+  top: 0;
+  height: calc(100vh - 48px);
+  padding-top: 0.5rem;
+  overflow-x: hidden;
+  overflow-y: auto !important;
+  /* Scrollable contents if viewport is shorter than content. */
+}
+
+.last-item {
+  border: none !important;
+}
+
+.seperator {
+  width: 100%;
+  height: 8px;
+  background-color: var(--light)
+}
+
+.ck-editor__editable_inline {
+  min-height: 400px;
+}
+
+/* custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--blue);
+  border-radius: 5px;
+  margin-right: 1rem;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--darkgray)
+}
+
+/* dark mode */
+.dark .sidebar {
+  background-color: var(--black) !important;
+  border-right: 1px solid rgba(224, 224, 224, 0.164);
+}
+
+.dark .sidebar .list i,
+.dark .sidebar span {
+  color: var(--light);
+}
+
+.dark .sidebar .list {
+  background-color: var(--black);
+}
+
+.dark .catagory-header h6 {
+  color: var(--light) !important;
+}
+
+.dark .catagory-header a {
+  background-color: transparent !important;
+}
+
+.dark .sidebar .list a {
+  background-color: var(--dark);
+}
+
+.dark .sidebar .seperator {
+  background-color: var(--blue);
+}
+
+.dark .sidebar .active:not(.edit) {
+  background-color: var(--blue) !important;
+}
+
+.dark .sidebar button {
+  background-color: var(--dark) !important;
+}
+
+/*----------------------- main header ----------------------------*/
+.dark .navbar {
+  background-color: var(--black) !important;
+}
+
+.nav-item {
+  font-size: 1.5rem;
+}
+
+.dark .navbar i,
+.dark .navbar button {
+  color: var(--light);
+}
+
+.dark .navbar a {
+  color: var(--blue) !important;
+}
+
+.light .navbar a {
+  color: var(--blue) !important;
+}
+
+.dark .navbar div {
+  background-color: var(--black);
+}
+
+/*----------------------- main ----------------------------*/
+/* .dark{
+   background-color: var(--dark);
+ } */
+.dark p {
+  color: var(--light) !important;
+}
+
+.dark .home-card {
+  background-color: var(--darkgray) !important;
+}
+
+.dark .card,
+.dark .catagory-card,
+.dark .todocard {
+  background-color: var(--darkgray) !important;
+}
+
+.dark .todocard span {
+  color: var(--light) !important;
+}
+
+.modal {
+  background-color: transparent;
+}
+
+.dark .modal-content,
+.dark .new-input {
+  background-color: var(--dark);
+}
+
+.dark .new-input {
+  color: #a7a7a7
+}
+
+.dark button,
+.dark i,
+.dark .modal-title,
+.dark label {
+  color: var(--darkgray);
+}
+
+.dark .modal-content input[type="input"] {
+  color: var(--light) !important;
+}
+
+.dark .ck {
+  background-color: var(--darkgray) !important;
+}
+
+.dark .card p,
+.dark .todocard span {
+  color: var(--light);
+}
+
+.dark .add-btn {
+  box-shadow: none;
+}
+
+.dark .view-titlebar i,
+.dark .view-titlebar p {
+  color: var(--light) !important;
+}
+
+.dark .view-todo,
+.dark .view-todo input[type="text"],
+.dark .view-todo input[type="datetime-local"] {
+  background-color: var(--darkgray) !important;
+}
+
+.dark .view-todo i,
+.dark .view-todo input,
+.dark .view-todo input::placeholder,
+.dark .view-todo button,
+.dark .view-todo span,
+.dark .view-note button,
+.dark .view-note i,
+.dark .view-note p {
+  color: var(--light);
+}
+
+.dark .settings {
+  background-color: var(--darkgray) !important;
+}
+
+.dark .settings label {
+  color: var(--light) !important;
+}
+
+.dark .settings button {
+  color: var(--light) !important;
+}
+
+.dark .catagory-card i,
+.dark .catagory-card button {
+  color: var(--light)
+}
+
+/*----------------------- profile ----------------------------*/
+.dark .profile .detail{
+  background-color: var(--darkgray) !important;
+}
+.dark .profile label {
+  color: var(--light) !important;
+}
+
+.dark .profile button {
+  color: var(--light) !important;
+}
+
+.dark .profile h1 {
+  color: var(--light) !important;
+}
+
+.dark .profile .custom-file-label {
+  color: var(--dark) !important;
+}
+
+.custom-file {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.custom-file-input {
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.custom-file-label {
+  display: block;
+  padding: 8px;
+  background-color: #e9ecef;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/*----------------------- login signup ----------------------------*/
+.dark .login-card,
+.dark .signup-card {
+  background-color: var(--darkgray) !important;
+}
+
+.dark .login-card i,
+.dark .signup-card i {
+  color: var(--light);
+}
+
+/*----------------------- Media query ----------------------------*/
+@media (min-width: 991.98px) {
+  main {
+    padding-left: 240px;
   }
 
-  body:has(.light) {
-    background-color: var(--light);
+  .logo {
+    width: 50px;
+    margin: 0
   }
 
-  body:has(.dark) {
-    background-color: var(--dark);
+  header button#navbar-toggler {
+    display: none;
   }
+}
 
-  main{
-    margin-top: 58px;
-  }
-  .login-card, .signup-card{
-    margin-top: 160px !important;
-  }
-  /* navbar */
-  .navbar{
-    border-bottom: 1px solid #eeeeee;
-  }
-  .dark .navbar{
-    border-bottom: 1px solid var(--darkgray);
-  }
-  /* Sidebar */
+@media (max-width: 991.98px) {
   .sidebar {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    padding-top: 70px;
-    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
-    width: 240px;
-    z-index: 1000;
-  }
-  .sidebar-sticky {
-    position: relative;
-    top: 0;
-    height: calc(100vh - 48px);
-    padding-top: 0.5rem;
-    overflow-x: hidden;
-    overflow-y: auto !important; /* Scrollable contents if viewport is shorter than content. */
-  }
-  .last-item{
-    border: none !important;
-  }
-  .seperator{
-    width: 100%;
-    height: 8px;
-    background-color: var(--light)
-  }
-  .ck-editor__editable_inline{
-    min-height: 400px;
-  }
-  /* custom scrollbar */
-  ::-webkit-scrollbar{
-    width: 10px;
-  }
-  ::-webkit-scrollbar-track{
-    background-color: transparent;
-  }
-  ::-webkit-scrollbar-thumb{
-    background-color: var(--blue);
-    border-radius: 5px;
-    margin-right: 1rem;
-  }
-  ::-webkit-scrollbar-thumb:hover{
-    background-color: var(--darkgray)
-  }
-  /* dark mode */
-  .dark .sidebar{
-    background-color: var(--black) !important;
-    border-right: 1px solid rgba(224, 224, 224, 0.164);
-  }
-  .dark .sidebar .list i,
-  .dark .sidebar span{
-    color: var(--light);
-  }
-  .dark .sidebar .list{
-    background-color: var(--black);
-  }
-  .dark .catagory-header h6{
-    color: var(--light) !important;
-  }
-  .dark .catagory-header a{
-    background-color: transparent !important;
-  }
-  .dark .sidebar .list a{
-    background-color: var(--dark); 
-  }
-  .dark .sidebar .seperator{
-    background-color: var(--blue);
-  }
-  .dark .sidebar .active:not(.edit){
-    background-color: var(--blue) !important;
-  }
-  .dark .sidebar button{
-    background-color: var(--dark) !important;
-  }
-  /*----------------------- main header ----------------------------*/
-  .dark .navbar{
-    background-color: var(--black) !important;
-  }
-  .nav-item {font-size: 1.5rem;}
-  .dark .navbar i,
-  .dark .navbar button{
-    color: var(--light);
-  }
-  .dark .navbar a{
-    color: var(--blue) !important;
-  }
-  .light .navbar a{
-    color: var(--blue) !important;
-  }
-  .dark .navbar div{
-    background-color: var(--black);
-  }
-  /*----------------------- main ----------------------------*/
-  /* .dark{
-    background-color: var(--dark);
-  } */
-  .dark p{
-    color: var(--light) !important;
-  }
-  .dark .home-card{
-    background-color: var(--darkgray) !important;
-  }
-  .dark .card,
-  .dark .catagory-card,
-  .dark .todocard{
-    background-color: var(--darkgray) !important;
-  }
-  .dark .todocard span{
-    color: var(--light) !important;
-  }
-  .modal{
-    background-color: transparent;
-  }
-  .dark .modal-content,
-  .dark .new-input{
-    background-color: var(--dark);
-  }
-  .dark .new-input{
-    color: #a7a7a7
-  }
-  .dark button,
-  .dark i,
-  .dark .modal-title,
-  .dark label{
-    color: var(--darkgray);
-  }
-  .dark .modal-content input[type="input"]{
-    color: var(--light) !important;
-  }
-  .dark .ck{
-    background-color:var(--darkgray) !important;
-  }
-  .dark .card p,
-  .dark .todocard span{
-    color: var(--light);
-  }
-  .dark .add-btn{
-    box-shadow: none;
-  }
-  .dark .view-titlebar i,
-  .dark .view-titlebar p{
-    color: var(--light) !important;
-  } 
-  .dark .view-todo,
-  .dark .view-todo input[type="text"],
-  .dark .view-todo input[type="datetime-local"]{
-    background-color: var(--darkgray) !important;
-  }
-  .dark .view-todo i,
-  .dark .view-todo input,
-  .dark .view-todo input::placeholder,
-  .dark .view-todo button,
-  .dark .view-todo span,
-  .dark .view-note button, 
-  .dark .view-note i,
-  .dark .view-note p{
-    color: var(--light);
-  }
-  .dark .settings{
-    background-color: var(--darkgray) !important;
-  }
-  .dark .settings label{
-    color: var(--light) !important;
-  }
-  .dark .catagory-card i, 
-  .dark .catagory-card button{
-    color: var(--light)
-  }
-  /*----------------------- login signup ----------------------------*/
-  .dark .login-card,
-  .dark .signup-card{
-    background-color: var(--darkgray) !important;
-  }
-  .dark .login-card i,
-  .dark .signup-card i{
-    color: var(--light);
-  }
-  /*----------------------- Media query ----------------------------*/
-  @media (min-width: 991.98px) {
-    main{
-      padding-left: 240px;
-    }
-    .logo {width: 50px; margin: 0}
-    header button#navbar-toggler{
-      display: none;
-    }
-  }
-  @media (max-width: 991.98px) {
-    .sidebar {
-      width: 50%;
-    }
-    .logo {width: 40px; margin: 0}
-    .nav-item {font-size: 1.2rem;}
-    header button#navbar-toggler{
-      margin: 0.2rem;
-      padding: 0.2rem 0.4rem;
-      font-size: 1.2rem;
-      border: none;
-      background-color: transparent;
-    }
-  }
-  @media (max-width: 425px) {
-    .sidebar {
-      width: 70%;
-    }
-    .nav-item {font-size: 1rem}
-    header h3{
-      font-size: 1.2rem;
-    }
-    .catagory-card{
-      padding: 0.6rem !important;
-    }
-    .catagory-card i{
-      font-size: 1rem !important;
-    }
-    .catagory-card input{
-      font-size: 0.9rem;
-    }
+    width: 50%;
   }
 
- 
+  .settings .inputs {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+  }
+
+  .logo {
+    width: 40px;
+    margin: 0
+  }
+
+  .nav-item {
+    font-size: 1.2rem;
+  }
+
+  header button#navbar-toggler {
+    margin: 0.2rem;
+    padding: 0.2rem 0.4rem;
+    font-size: 1.2rem;
+    border: none;
+    background-color: transparent;
+  }
+}
+
+@media (max-width: 425px) {
+  .sidebar {
+    width: 70%;
+  }
+
+  .nav-item {
+    font-size: 1rem
+  }
+
+  header h3 {
+    font-size: 1.2rem;
+  }
+
+  .settings {
+    padding: 0.5rem !important;
+  }
+
+  .settings label {
+    font-size: 1rem !important;
+  }
+
+  .settings .inputs {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .catagory-card {
+    padding: 0.6rem !important;
+  }
+
+  .catagory-card i {
+    font-size: 1rem !important;
+  }
+
+  .catagory-card input {
+    font-size: 0.9rem;
+  }
+}

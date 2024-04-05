@@ -40,7 +40,7 @@ const MainHeader = () => {
                             <div className='d-flex align-items-center mx-2'>
                                 <Link to="" className='bell'>
                                     <i className='fas fa-bell'></i>
-                                    <span className="badge rounded-pill bg-danger">1</span>
+                                    {/* <span className="badge rounded-pill bg-danger">1</span> */}
                                 </Link>
                             </div>
                             <DropDown>
