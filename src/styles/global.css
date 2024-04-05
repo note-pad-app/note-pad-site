@@ -106,15 +106,16 @@
   .dark .navbar{
     background-color: var(--black) !important;
   }
+  .nav-item {font-size: 1.5rem;}
   .dark .navbar i,
   .dark .navbar button{
     color: var(--light);
   }
   .dark .navbar a{
-    color: var(--light) !important;
+    color: var(--blue) !important;
   }
   .light .navbar a{
-    color: var(--dark) !important;
+    color: var(--blue) !important;
   }
   .dark .navbar div{
     background-color: var(--black);
@@ -210,7 +211,6 @@
       padding-left: 240px;
     }
     .logo {width: 50px; margin: 0}
-    .nav-item {font-size: 1.4rem;}
     header button#navbar-toggler{
       display: none;
     }

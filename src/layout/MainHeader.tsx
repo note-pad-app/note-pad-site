@@ -29,7 +29,7 @@ const MainHeader = () => {
                             <Link className="navbar-brand p-0 m-0 me-2" to="/">
                                 <img src={logo} alt="logo" className='logo'/>
                             </Link>
-                            <Link className="navbar-brand p-0 nav-item m-0 me-2" to="/notes">
+                            <Link className="navbar-brand p-0 nav-item m-0 me-2" style={{color: 'red !important'}} to="/notes">
                                 Notes
                             </Link>
                             <Link className="navbar-brand p-0 nav-item m-0" to="/todos">

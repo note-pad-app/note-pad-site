@@ -2,6 +2,9 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 import App from './App'
+import "./styles/icons/css/all.css"
+import "bootstrap/dist/css/bootstrap.min.css"
+import "./styles/global.css"
 import { configureStore } from '@reduxjs/toolkit'
 import { Provider } from 'react-redux'
 import darkModeReducer from './slices/DarkMode'
