@@ -11,7 +11,7 @@ function TodoCard({ todo, check, deleted }: paramType) {
     return (
         <div className='todocard border-rounded-3 shadow-sm p-4 mt-3 bg-white d-flex justify-content-between'>
             <div className='d-flex justify-content-start align-items-center'>
-                {check ? <input type="checkbox" className='form-check-input m-3 p-3' /> : null}
+                {check ? <input type="checkbox" className='form-check-input m-3' /> : null}
                 <Link to="/todos/todo/23" className='text-decoration-none d-flex align-items-center w-100'>
                     <span className='text-black'>{todo.length > 100 ? todo.slice(0, 100) + "..." : todo}</span>
                 </Link>

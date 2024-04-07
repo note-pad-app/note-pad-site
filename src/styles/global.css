@@ -129,9 +129,11 @@ main {
 .dark .navbar {
   background-color: var(--black) !important;
 }
-.dropdown-toggle::after{
+
+.dropdown-toggle::after {
   display: none !important;
 }
+
 .nav-item {
   font-size: 1.5rem;
 }
@@ -191,7 +193,7 @@ main {
 
 .dark button,
 .dark .modal-title,
-label{
+label {
   color: var(--darkgray);
 }
 
@@ -223,9 +225,11 @@ label{
 .dark .view-todo input[type="datetime-local"] {
   background-color: var(--darkgray) !important;
 }
-.dark .category-card{
+
+.dark .category-card {
   background-color: red !important;
 }
+
 .dark .view-todo i,
 .dark .view-todo input,
 .dark .view-todo input::placeholder,
@@ -233,8 +237,8 @@ label{
 .dark .view-todo span,
 .dark .view-note button,
 .dark .view-note i,
-.dark .view-note p, 
-.dark .note-content{
+.dark .view-note p,
+.dark .note-content {
   color: var(--light) !important;
 }
 
@@ -254,26 +258,36 @@ label{
 .dark .catagory-card button {
   color: var(--light)
 }
+
 .action-button {
   background-color: transparent;
   border: none;
   font-size: 1.6rem;
   transition: 0.9;
 }
-.action-button:hover{
+
+.action-button:hover {
   opacity: 0.9;
 }
-.note-content{
+
+.note-content {
   min-height: 60vh;
   color: var(--dark)
 }
-i{
+
+i {
   cursor: pointer;
 }
+
+.profile-edit{
+  width: 80%;
+}
+
 /*----------------------- profile ----------------------------*/
-.dark .profile .detail{
+.dark .profile .detail {
   background-color: var(--darkgray) !important;
 }
+
 .dark .profile label {
   color: var(--light) !important;
 }
@@ -352,9 +366,11 @@ i{
     margin-top: 1rem;
   }
 
-  .action-button, #heart~label{
+  .action-button,
+  #heart~label {
     font-size: 1.2rem;
   }
+
   .logo {
     width: 40px;
     margin: 0
@@ -363,7 +379,8 @@ i{
   .nav-item {
     font-size: 1rem;
   }
-  .home-card p{
+
+  .home-card p {
     font-size: 1.2rem !important;
   }
 
@@ -380,10 +397,27 @@ i{
   .sidebar {
     width: 70%;
   }
-  .action-button, #heart~label{
-    font-size: 1rem;
+
+  .search {
+    padding: 0 !important;
+    height: 2.4rem;
+  }
+
+  .form-check-input {
+    padding: 0.65rem;
+  }
+
+  .add-btn {
+    padding: 0.4rem 0.7rem !important;
+    font-size: 0.8rem;
+  }
+
+  .action-button,
+  #heart~label {
+    font-size: 1.3rem;
     margin-right: 0.3rem !important;
   }
+
   .nav-item {
     font-size: 1rem
   }
@@ -404,12 +438,14 @@ i{
     display: flex;
     flex-direction: column;
   }
-  .home-card{
+
+  .home-card {
     margin-left: 0.4rem !important;
     margin-right: 0.4rem !important;
     padding: 0.4rem !important;
   }
-  .home-card p{
+
+  .home-card p {
     font-size: 0.8rem !important;
     margin: 0 !important;
   }
@@ -417,17 +453,23 @@ i{
   .catagory-card {
     padding: 0.6rem !important;
   }
-  .list-group-item{
+
+  .list-group-item {
     font-size: 0.9rem;
   }
-  .list-group-item i{
+
+  .list-group-item i {
     margin-right: 0.3rem !important;
   }
+
   .catagory-card i {
     font-size: 1rem !important;
   }
 
   .catagory-card input {
     font-size: 0.9rem;
+  }
+  .profile-edit{
+    width: 100%;
   }
 }

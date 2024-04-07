@@ -1,11 +1,14 @@
 .todocard {
-    cursor: pointer;
     transition: 0.4s;
     padding: 1rem !important;
 }
 
 .todocard:hover{
     scale: 1.007;
+}
+
+.form-check-input{
+    padding: 0.85rem;
 }
 
 
