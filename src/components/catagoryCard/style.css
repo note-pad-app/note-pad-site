@@ -1,11 +1,11 @@
-input{
-border: none; 
-outline: none; 
-border-bottom: 1px solid gray; 
-padding: 0.6rem
+.category-input {
+    border: none;
+    outline: none;
+    border-bottom: 1px solid gray;
+    padding: 0.6rem
 }
 
-.dark input{
+.dark .category-input {
     background-color: rgb(112, 112, 112);
     border-color: lightgray;
     color: lightgray;

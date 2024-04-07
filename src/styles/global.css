@@ -51,7 +51,6 @@ main {
   padding-top: 0.5rem;
   overflow-x: hidden;
   overflow-y: auto !important;
-  /* Scrollable contents if viewport is shorter than content. */
 }
 
 .last-item {
@@ -191,7 +190,7 @@ main {
 }
 
 .dark button,
-.modal-title,
+.dark .modal-title,
 label{
   color: var(--darkgray);
 }
@@ -205,7 +204,7 @@ label{
 }
 
 .dark .card p,
-.todocard span {
+.dark .todocard span {
   color: var(--light);
 }
 
@@ -214,28 +213,29 @@ label{
 }
 
 .dark .view-titlebar i,
-.view-titlebar p {
+.dark .view-titlebar p {
   color: var(--light) !important;
 }
 
 .dark .view-todo,
-.view-todo input[type="text"],
-.category-card input,
-.view-todo input[type="datetime-local"] {
+.dark .view-todo input[type="text"],
+.dark .category-card input,
+.dark .view-todo input[type="datetime-local"] {
   background-color: var(--darkgray) !important;
 }
 .dark .category-card{
   background-color: red !important;
 }
 .dark .view-todo i,
-.view-todo input,
-.view-todo input::placeholder,
-.view-todo button,
-.view-todo span,
-.view-note button,
-.view-note i,
-.view-note p {
-  color: var(--light);
+.dark .view-todo input,
+.dark .view-todo input::placeholder,
+.dark .view-todo button,
+.dark .view-todo span,
+.dark .view-note button,
+.dark .view-note i,
+.dark .view-note p, 
+.dark .note-content{
+  color: var(--light) !important;
 }
 
 .dark .settings {
@@ -262,6 +262,13 @@ label{
 }
 .action-button:hover{
   opacity: 0.9;
+}
+.note-content{
+  min-height: 60vh;
+  color: var(--dark)
+}
+i{
+  cursor: pointer;
 }
 /*----------------------- profile ----------------------------*/
 .dark .profile .detail{
