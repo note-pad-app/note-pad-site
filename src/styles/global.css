@@ -152,6 +152,7 @@ main {
   background-color: var(--black);
 }
 
+
 /*----------------------- main ----------------------------*/
 /* .dark{
    background-color: var(--dark);
@@ -188,9 +189,8 @@ main {
 }
 
 .dark button,
-.dark i,
 .dark .modal-title,
-.dark label {
+.dark label{
   color: var(--darkgray);
 }
 
@@ -249,7 +249,15 @@ main {
 .dark .catagory-card button {
   color: var(--light)
 }
-
+.action-button {
+  background-color: transparent;
+  border: none;
+  font-size: 1.6rem;
+  transition: 0.9;
+}
+.action-button:hover{
+  opacity: 0.9;
+}
 /*----------------------- profile ----------------------------*/
 .dark .profile .detail{
   background-color: var(--darkgray) !important;
@@ -332,6 +340,9 @@ main {
     margin-top: 1rem;
   }
 
+  .action-button, #heart~label{
+    font-size: 1.2rem;
+  }
   .logo {
     width: 40px;
     margin: 0
@@ -354,7 +365,10 @@ main {
   .sidebar {
     width: 70%;
   }
-
+  .action-button, #heart~label{
+    font-size: 1rem;
+    margin-right: 0.3rem !important;
+  }
   .nav-item {
     font-size: 1rem
   }
