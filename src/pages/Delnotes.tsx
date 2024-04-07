@@ -6,7 +6,7 @@ function Delnotes() {
   return (
     <main>
       <div className="container pt-4">
-      <TitleBar title="Recently deleted notes" type="none" />
+      <TitleBar title="Recently deleted notes"/>
       <Card deleted note="about school lldajdljldjljd aldakjdlfjkaldkjflajd la dlkajdflkjaldjflajd
         a dlaj dfljaldjf ad adljaj fdadj al jdflaj jfd jadfflj aljfd aljfda dflaj flad fla
         jlj afllj dalj laj dfaj da; dj

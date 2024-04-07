@@ -4,7 +4,7 @@ function EditNoteCats() {
   return (
     <main>
       <div className="container pt-4">
-      <TitleBar title="Edit note catagories" type="none"/>
+      <TitleBar title="Edit note catagories"/>
       <CatagoryCard />
       <CatagoryCard />
       <CatagoryCard />

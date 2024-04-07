@@ -49,11 +49,14 @@ const MainHeader = () => {
                                     id="profile_dropdown"
                                     className='border-0'
                                 >
-                                    <i className="fas fa-user"></i>
+                                    <img src="logo.png" alt="profile" width='35' height='35'/>
                                 </DropDown.Toggle>
                                 <DropDown.Menu>
                                     <DropDown.Item>
                                         <Link className="text-decoration-none text-black d-block" to="profile">My profile</Link>
+                                    </DropDown.Item>
+                                    <DropDown.Item>
+                                        <Link className="text-decoration-none text-black d-block" to="settings">Settings</Link>
                                     </DropDown.Item>
                                     <DropDown.Item>
                                         <Link className="text-decoration-none text-black d-block" to="">Logout</Link>

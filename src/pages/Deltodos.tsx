@@ -5,7 +5,7 @@ function Deltodos() {
   return (
     <main>
       <div className="container">
-        <TitleBar title="Recently deleted todos" type="none"/>
+        <TitleBar title="Recently deleted todos"/>
         <TodoCard deleted todo="something todo" check={false}/>
         <TodoCard deleted todo="something todo" check={false}/>
         <TodoCard deleted todo="something todo" check={false}/>

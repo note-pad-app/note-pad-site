@@ -19,7 +19,8 @@ import Home from "./pages/Home"
 import Profile from "./pages/Profile"
 import Login from "./pages/Login"
 import SignUp from "./pages/SignUp"
-import Varification from "./pages/Varification"
+import Addtodo from "./pages/Addtodo"
+
 // redux 
 import { useSelector } from 'react-redux'
 import { useDarkMode } from './hooks/useDarkMode'
@@ -47,6 +48,7 @@ function App() {
             <Route path="todo/:id" element={<Viewtodo />} />
             <Route path="deletedTodos" element={<Deltodos />} />
             <Route path="editTodoCats" element={<EditTodoCats />} />
+            <Route path="addTodo" element={<Addtodo />} />
           </Route>
           <Route path="settings" element={<Setting />} />
           <Route path="profile" element={<Profile />} />
@@ -54,7 +56,6 @@ function App() {
         </Route>
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<SignUp />} />
-        <Route path="varify" element={<Varification />} />
       </Routes>
     </div>
   )

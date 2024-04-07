@@ -130,7 +130,9 @@ main {
 .dark .navbar {
   background-color: var(--black) !important;
 }
-
+.dropdown-toggle::after{
+  display: none !important;
+}
 .nav-item {
   font-size: 1.5rem;
 }
@@ -180,7 +182,7 @@ main {
 }
 
 .dark .modal-content,
-.dark .new-input {
+.new-input {
   background-color: var(--dark);
 }
 
@@ -189,8 +191,8 @@ main {
 }
 
 .dark button,
-.dark .modal-title,
-.dark label{
+.modal-title,
+label{
   color: var(--darkgray);
 }
 
@@ -203,7 +205,7 @@ main {
 }
 
 .dark .card p,
-.dark .todocard span {
+.todocard span {
   color: var(--light);
 }
 
@@ -212,24 +214,27 @@ main {
 }
 
 .dark .view-titlebar i,
-.dark .view-titlebar p {
+.view-titlebar p {
   color: var(--light) !important;
 }
 
 .dark .view-todo,
-.dark .view-todo input[type="text"],
-.dark .view-todo input[type="datetime-local"] {
+.view-todo input[type="text"],
+.category-card input,
+.view-todo input[type="datetime-local"] {
   background-color: var(--darkgray) !important;
 }
-
+.dark .category-card{
+  background-color: red !important;
+}
 .dark .view-todo i,
-.dark .view-todo input,
-.dark .view-todo input::placeholder,
-.dark .view-todo button,
-.dark .view-todo span,
-.dark .view-note button,
-.dark .view-note i,
-.dark .view-note p {
+.view-todo input,
+.view-todo input::placeholder,
+.view-todo button,
+.view-todo span,
+.view-note button,
+.view-note i,
+.view-note p {
   color: var(--light);
 }
 
@@ -349,7 +354,10 @@ main {
   }
 
   .nav-item {
-    font-size: 1.2rem;
+    font-size: 1rem;
+  }
+  .home-card p{
+    font-size: 1.2rem !important;
   }
 
   header button#navbar-toggler {
@@ -389,11 +397,25 @@ main {
     display: flex;
     flex-direction: column;
   }
+  .home-card{
+    margin-left: 0.4rem !important;
+    margin-right: 0.4rem !important;
+    padding: 0.4rem !important;
+  }
+  .home-card p{
+    font-size: 0.8rem !important;
+    margin: 0 !important;
+  }
 
   .catagory-card {
     padding: 0.6rem !important;
   }
-
+  .list-group-item{
+    font-size: 0.9rem;
+  }
+  .list-group-item i{
+    margin-right: 0.3rem !important;
+  }
   .catagory-card i {
     font-size: 1rem !important;
   }

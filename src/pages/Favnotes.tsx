@@ -6,7 +6,7 @@ function Favnotes() {
   return (
     <main>
       <div className="container pt-4">
-      <TitleBar title="My favourites" type="none" />
+      <TitleBar title="My favourites"/>
       <Searchbar />
       <Card note="about school lldajdljldjljd aldakjdlfjkaldkjflajd la dlkajdflkjaldjflajd
         a dlaj dfljaldjf ad adljaj fdadj al jdflaj jfd jadfflj aljfd aljfda dflaj flad fla

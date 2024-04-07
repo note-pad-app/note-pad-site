@@ -5,7 +5,7 @@ function EditTodoCats() {
   return (
     <main>
       <div className="container pt-4">
-        <TitleBar title="Edit todo catagories" type="none" />
+        <TitleBar title="Edit todo catagories"/>
         <CatagoryCard />
         <CatagoryCard />
         <CatagoryCard />
