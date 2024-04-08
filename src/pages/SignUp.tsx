@@ -25,7 +25,7 @@ function SignUp() {
     }
     return (
         <div className='container'>
-            <div className='signup-card col col-md-8 col-lg-5 col-xxl-5 mt-5 mx-auto p-3 rounded shadow-lg'>
+            <div className='signup-card col col-md-8 col-lg-5 col-xxl-5 mx-auto p-3 rounded shadow-lg'>
                 <p className='fs-1 text-black-50 text-center'>Sign Up</p>
                 <Formik
                     initialValues={initailValues}
