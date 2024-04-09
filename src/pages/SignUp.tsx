@@ -1,35 +1,20 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik'
-import * as yup from 'yup'
 import { Link } from 'react-router-dom'
-import { useMutation } from 'react-query'
-import * as api from '../api'
-import { useNavigate } from 'react-router-dom'
-import { useState } from 'react'
+import { initailValues, schema } from '../validators/signup'
 
 function SignUp() {
-    const navigate = useNavigate()
-    const [verfiyMessage, setVerifyMessage] = useState(false)
-
-    const initailValues = { username: '', email: '', password: '', confirm: '' };
-    const loginSchema = yup.object({
-        username: yup.string().required().min(3),
-        email: yup.string().required().min(3).email(),
-        password: yup.string().required().min(4),
-        confirm: yup.string().label('confirm password').required().oneOf([yup.ref('password'), null], 'password must match!')
-    })
-
-    const register = useMutation(api.register)
-
+    
     const onSubmit = (values: any) => {
-        register.mutate(values, { onSuccess: () => setVerifyMessage(true) });
+        console.log(values)        
     }
+
     return (
         <div className='container'>
             <div className='signup-card col col-md-8 col-lg-5 col-xxl-5 mx-auto p-3 rounded shadow-lg'>
                 <p className='fs-1 text-black-50 text-center'>Sign Up</p>
                 <Formik
                     initialValues={initailValues}
-                    validationSchema={loginSchema}
+                    validationSchema={schema}
                     onSubmit={onSubmit}
                 >
                     <Form>
@@ -59,7 +44,7 @@ function SignUp() {
                         </div>
                         <div className="text-center mt-3">
                             <button type="submit" className='btn btn-primary text-white mt-3 px-4 align-self-center'>
-                                {register.isLoading ? 'Sign Up...' : 'Sign Up'}
+                                Sign Up
                             </button>
                         </div>
                         <div className='text-center mt-4'>
