@@ -52,10 +52,10 @@ function App() {
           </Route>
           <Route path="settings" element={<Setting />} />
           <Route path="profile" element={<Profile />} />
-          <Route path="*" element={<Notfound />} />
         </Route>
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<SignUp />} />
+        <Route path="*" element={<Notfound />} />
       </Routes>
     </div>
   )

@@ -3,6 +3,8 @@ import { useDispatch } from "react-redux"
 import { changeTheme } from "../slices/DarkMode"
 import { useDarkMode } from '../hooks/useDarkMode'
 import { useState } from "react";
+import { ErrorMessage, Field, Form, Formik } from "formik";
+import { initailValues, schema } from '../validators/changepassword'
 
 function Setting() {
   const theme = useDispatch();
@@ -12,11 +14,13 @@ function Setting() {
   }
 
   const [show, setshow] = useState(false)
-
+  const onSubmit = (values: Object) => {
+    console.log(values)
+  }
   return (
     <div className="container" style={{ marginTop: '60px' }}>
       <div className="d-flex justify-content-center">
-        <TitleBar title="Settings"/>
+        <TitleBar title="Settings" />
       </div>
       <div className="settings mt-3 shadow-sm p-4 bg-white w-100 rounded d-flex justify-content-between align-items-center">
         <label htmlFor="dark-mode" className="text-black-50 fs-2">
@@ -36,11 +40,21 @@ function Setting() {
           </div>
         </div>
         {
-          show ? <div className='d-flex justify-content-between gap-3 inputs mt-3'>
-            <input type="password" id="dark-mode" className='form-control' placeholder="new password" />
-            <input type="password" id="dark-mode" className='form-control' placeholder="retype password" />
-            <button className="btn btn-success">Change</button>
-          </div> : ''
+          show ?
+            <Formik
+              initialValues={initailValues}
+              validationSchema={schema}
+              onSubmit={onSubmit}
+            >
+              <Form className='d-flex justify-content-between gap-3 inputs mt-3'>
+                <Field type="password" name="password" id="dark-mode" className='form-control' placeholder="new password" />
+                <ErrorMessage name="password"/>
+                <Field type="password" name="confirm" id="dark-mode" className='form-control' placeholder="retype password" />
+                <ErrorMessage name="confirm" />
+                <button type="submit" className="btn btn-success">Change</button>
+              </Form>
+            </Formik>
+            : ''
         }
       </div>
     </div>

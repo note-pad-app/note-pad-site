@@ -1,20 +1,11 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik'
-import * as yup from 'yup'
-import ErrorText from '../components/errorMessage'
 import { Link } from 'react-router-dom'
-import { useLocation } from 'react-router'
-import React from 'react'
+import {initailValues, schema} from '../validators/login'
 
 function Login() {
-    const locate = useLocation();
-    console.log('location: ', locate)
-    const initailValues = { username: '', password: '' };
-    const loginSchema = yup.object({
-        username: yup.string().required().min(3),
-        password: yup.string().required().min(4)
-    })
+    
     const onSubmit = (values: Object) => {
-        console.log(typeof ErrorText)
+        console.log(values)
     }
     return (
         <div className='container'>
@@ -23,7 +14,7 @@ function Login() {
                 <p className='fs-1 text-black-50 text-center'>Login</p>
                 <Formik
                     initialValues={initailValues}
-                    validationSchema={loginSchema}
+                    validationSchema={schema}
                     onSubmit={onSubmit}
                 >
                     <Form>
