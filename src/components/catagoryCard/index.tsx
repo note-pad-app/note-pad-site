@@ -4,7 +4,7 @@ function CatagoryCard() {
   return (
     <div className="catagory-card d-flex justify-content-between align-items-center my-3 p-3 shadow-sm bg-white rounded">
       <div className="d-flex align-items-end">
-        <input className='category-input' type="text" value="Personal" />
+        <input className='category-input' type="text" />
       </div>
       <div>
         <button className='action-button me-4'>

@@ -46,24 +46,26 @@ function Setting() {
               validationSchema={schema}
               onSubmit={onSubmit}
             >
-              <Form className='d-flex inputs gap-4 mt-3'>
-                <div>
+              <Form className='d-flex inputs gap-2 mt-3'>
+                <div className="w-100">
                   <div className='mt-2 d-flex justify-content-start align-items-center'>
                     <Field type="password" name="password" id="dark-mode" className='form-control' placeholder="new password" />
                   </div>
-                  <div className='mx-5 mt-2 text-danger text-center'>
+                  <div className='mx-5 m-0 text-danger text-center'>
                     <ErrorMessage name="password" />
                   </div>
                 </div>
-                <div>
+                <div className="w-100">
                   <div className='mt-2 d-flex justify-content-start align-items-center'>
                     <Field type="password" name="confirm" id="dark-mode" className='form-control' placeholder="retype password" />
                   </div>
-                  <div className='mx-5 mt-2 text-danger text-center'>
+                  <div className='mx-5 m-0 text-danger text-center'>
                     <ErrorMessage name="confirm" />
                   </div>
                 </div>
-                <button type="submit" className="btn btn-success">Change</button>
+                <div>
+                <button type="submit" className="mt-2 btn btn-success">Change</button>
+                </div>
               </Form>
             </Formik>
             : ''

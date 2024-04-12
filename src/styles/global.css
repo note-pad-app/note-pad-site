@@ -20,18 +20,126 @@ main {
 
 .login-card,
 .signup-card {
-  margin-top: 160px !important;
+  margin-top: 120px !important;
+}
+
+i, input[type=checkbox] {
+  cursor: pointer;
+}
+
+/*------------------dark theme---------------------------------------- */
+
+/* darkgray */
+.dark .navbar {
+  border-bottom: 1px solid var(--darkgray) !important;
+}
+.dark .card,
+.dark .catagory-card,
+.dark .todocard, 
+.dark .home-card,
+.dark .ck, 
+.dark .view-todo,
+.dark .view-todo input[type="text"],
+.dark .category-card input,
+.dark .view-todo input[type="datetime-local"], 
+.dark .settings,
+.dark .profile .detail,
+.dark .login-card,
+.dark .signup-card{
+  background-color: var(--darkgray) !important;
+}
+
+.dark button,
+.dark .modal-title,
+label {
+  color: var(--darkgray);
+}
+
+/* light */
+.dark .sidebar .list i,
+.dark .sidebar span, 
+.dark .catagory-header h6,
+.dark .navbar i,
+.dark .navbar button,
+.dark p,
+.dark .todocard span,
+.dark .card p,
+.dark .todocard span,
+.dark .modal-content input[type="input"],
+.dark .view-titlebar i,
+.dark .view-titlebar p,
+.dark .view-todo i,
+.dark .view-todo input,
+.dark .view-todo input::placeholder,
+.dark .view-todo button,
+.dark .view-todo span,
+.dark .view-note button,
+.dark .view-note i,
+.dark .view-note p,
+.dark .note-content,
+.dark .catagory-card i,
+.dark .catagory-card button,
+.dark .settings button,
+.dark .settings label,
+.dark .profile label,
+.dark .profile button,
+.dark .profile h1,
+.dark .login-card i,
+.dark .signup-card i{
+  color: var(--light) !important;
+}
+
+/* dark */
+.dark .sidebar {
+  background-color: var(--black) !important;
+  border-right: 1px solid rgba(224, 224, 224, 0.164);
+}
+
+.dark .sidebar .list,
+.dark .navbar div{
+  background-color: var(--black);
+}
+
+.dark .sidebar .list a,
+.dark .modal-content,
+.new-input,
+.dark .sidebar .list a,
+.dark .sidebar button,
+.dark .sidebar button{
+  background-color: var(--dark);
+}
+.dark .profile .custom-file-label {
+  color: var(--dark) !important;
+}
+
+/* blue */
+.dark .sidebar .seperator,
+.dark .sidebar .active:not(.edit){
+  background-color: var(--blue) !important;
+}
+
+.dark .navbar a {
+  color: var(--blue) !important;
+}
+
+.dark .catagory-header a {
+  background-color: transparent !important;
+}
+
+.dark .new-input {
+  color: #a7a7a7
+} 
+.dark .add-btn {
+  box-shadow: none;
+}
+.dark .catagory-header a {
+  background-color: transparent !important;
 }
 
 /* navbar */
 .navbar {
   border-bottom: 1px solid #eeeeee;
 }
-
-.dark .navbar {
-  border-bottom: 1px solid var(--darkgray);
-}
-
 /* Sidebar */
 .sidebar {
   position: fixed;
@@ -86,49 +194,7 @@ main {
   background-color: var(--darkgray)
 }
 
-/* dark mode */
-.dark .sidebar {
-  background-color: var(--black) !important;
-  border-right: 1px solid rgba(224, 224, 224, 0.164);
-}
-
-.dark .sidebar .list i,
-.dark .sidebar span {
-  color: var(--light);
-}
-
-.dark .sidebar .list {
-  background-color: var(--black);
-}
-
-.dark .catagory-header h6 {
-  color: var(--light) !important;
-}
-
-.dark .catagory-header a {
-  background-color: transparent !important;
-}
-
-.dark .sidebar .list a {
-  background-color: var(--dark);
-}
-
-.dark .sidebar .seperator {
-  background-color: var(--blue);
-}
-
-.dark .sidebar .active:not(.edit) {
-  background-color: var(--blue) !important;
-}
-
-.dark .sidebar button {
-  background-color: var(--dark) !important;
-}
-
 /*----------------------- main header ----------------------------*/
-.dark .navbar {
-  background-color: var(--black) !important;
-}
 
 .dropdown-toggle::after {
   display: none !important;
@@ -138,125 +204,13 @@ main {
   font-size: 1.5rem;
 }
 
-.dark .navbar i,
-.dark .navbar button {
-  color: var(--light);
-}
-
-.dark .navbar a {
-  color: var(--blue) !important;
-}
-
 .light .navbar a {
   color: var(--blue) !important;
 }
 
-.dark .navbar div {
-  background-color: var(--black);
-}
-
-
 /*----------------------- main ----------------------------*/
-/* .dark{
-   background-color: var(--dark);
- } */
-.dark p {
-  color: var(--light) !important;
-}
-
-.dark .home-card {
-  background-color: var(--darkgray) !important;
-}
-
-.dark .card,
-.dark .catagory-card,
-.dark .todocard {
-  background-color: var(--darkgray) !important;
-}
-
-.dark .todocard span {
-  color: var(--light) !important;
-}
-
 .modal {
   background-color: transparent;
-}
-
-.dark .modal-content,
-.new-input {
-  background-color: var(--dark);
-}
-
-.dark .new-input {
-  color: #a7a7a7
-}
-
-.dark button,
-.dark .modal-title,
-label {
-  color: var(--darkgray);
-}
-
-.dark .modal-content input[type="input"] {
-  color: var(--light) !important;
-}
-
-.dark .ck {
-  background-color: var(--darkgray) !important;
-}
-
-.dark .card p,
-.dark .todocard span {
-  color: var(--light);
-}
-
-.dark .add-btn {
-  box-shadow: none;
-}
-
-.dark .view-titlebar i,
-.dark .view-titlebar p {
-  color: var(--light) !important;
-}
-
-.dark .view-todo,
-.dark .view-todo input[type="text"],
-.dark .category-card input,
-.dark .view-todo input[type="datetime-local"] {
-  background-color: var(--darkgray) !important;
-}
-
-.dark .category-card {
-  background-color: red !important;
-}
-
-.dark .view-todo i,
-.dark .view-todo input,
-.dark .view-todo input::placeholder,
-.dark .view-todo button,
-.dark .view-todo span,
-.dark .view-note button,
-.dark .view-note i,
-.dark .view-note p,
-.dark .note-content {
-  color: var(--light) !important;
-}
-
-.dark .settings {
-  background-color: var(--darkgray) !important;
-}
-
-.dark .settings label {
-  color: var(--light) !important;
-}
-
-.dark .settings button {
-  color: var(--light) !important;
-}
-
-.dark .catagory-card i,
-.dark .catagory-card button {
-  color: var(--light)
 }
 
 .action-button {
@@ -275,35 +229,11 @@ label {
   color: var(--dark)
 }
 
-i {
-  cursor: pointer;
-}
-
 .profile-edit{
   width: 80%;
 }
 
 /*----------------------- profile ----------------------------*/
-.dark .profile .detail {
-  background-color: var(--darkgray) !important;
-}
-
-.dark .profile label {
-  color: var(--light) !important;
-}
-
-.dark .profile button {
-  color: var(--light) !important;
-}
-
-.dark .profile h1 {
-  color: var(--light) !important;
-}
-
-.dark .profile .custom-file-label {
-  color: var(--dark) !important;
-}
-
 .custom-file {
   position: relative;
   display: inline-block;
@@ -326,17 +256,6 @@ i {
   background-color: #e9ecef;
   border-radius: 4px;
   cursor: pointer;
-}
-
-/*----------------------- login signup ----------------------------*/
-.dark .login-card,
-.dark .signup-card {
-  background-color: var(--darkgray) !important;
-}
-
-.dark .login-card i,
-.dark .signup-card i {
-  color: var(--light);
 }
 
 /*----------------------- Media query ----------------------------*/

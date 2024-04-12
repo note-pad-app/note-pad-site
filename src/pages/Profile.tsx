@@ -1,6 +1,6 @@
-import { Field, Form, Formik } from "formik"
+import { ErrorMessage, Field, Form, Formik } from "formik"
 import { useState } from "react"
-import { schema } from '../validators/profile'
+import { schema, initailValues } from '../validators/profile'
 
 function Profile() {
   const [edit, setEdit] = useState(false)
@@ -22,18 +22,23 @@ function Profile() {
         {
           edit ?
             <Formik
-              initialValues={{}}
+              initialValues={initailValues}
               validationSchema={schema}
               onSubmit={onSubmit}
             >
               <Form className='profile-edit d-flex flex-column justify-content-between gap-3 inputs mt-3'>
-
                 <div className="custom-file">
                   <Field type="file" name="photo" id="file-input" className="custom-file-input" />
                   <label htmlFor="file-input" className="custom-file-label">Upload Avatar</label>
                 </div>
                 <Field type="text" name="fullname" className='form-control' placeholder="fullname" />
+                <div className='mx-5 text-danger text-center'>
+                  <ErrorMessage name="fullname" />
+                </div>
                 <Field type="text" name="username" className='form-control' placeholder="username" />
+                <div className='mx-5 text-danger text-center'>
+                  <ErrorMessage name="username" />
+                </div>
                 <button type="submit" className="btn btn-success">Save changes</button>
               </Form>
             </Formik>
