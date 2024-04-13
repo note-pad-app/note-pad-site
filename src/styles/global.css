@@ -77,8 +77,6 @@ label {
 .dark .view-note i,
 .dark .view-note p,
 .dark .note-content,
-.dark .catagory-card i,
-.dark .catagory-card button,
 .dark .settings button,
 .dark .settings label,
 .dark .profile label,
@@ -90,6 +88,9 @@ label {
 }
 
 /* dark */
+.dark nav{
+  background-color: var(--black) !important;
+}
 .dark .sidebar {
   background-color: var(--black) !important;
   border-right: 1px solid rgba(224, 224, 224, 0.164);
@@ -100,13 +101,11 @@ label {
   background-color: var(--black);
 }
 
-.dark .sidebar .list a,
 .dark .modal-content,
-.new-input,
+.dark .new-input,
 .dark .sidebar .list a,
-.dark .sidebar button,
 .dark .sidebar button{
-  background-color: var(--dark);
+  background-color: var(--dark) !important;
 }
 .dark .profile .custom-file-label {
   color: var(--dark) !important;
@@ -132,7 +131,8 @@ label {
 .dark .add-btn {
   box-shadow: none;
 }
-.dark .catagory-header a {
+.dark .catagory-header a,
+.dark .sidebar .list a.edit {
   background-color: transparent !important;
 }
 

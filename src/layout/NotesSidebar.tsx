@@ -32,7 +32,7 @@ function Sidebar() {
                         <div className="seperator bg-primary"></div>
                         <div className="catagory-header d-flex justify-content-between align-items-center my-2">
                             <h6 className="text-uppercase m-0">catagories</h6>
-                            <NavLink to="editNoteCats" className="edit text-uppercase text-decoration-none edit">edit</NavLink>
+                            <NavLink to="editNoteCats" className="edit text-uppercase text-decoration-none">edit</NavLink>
                         </div>
                         <NavLink to="/notes/work" className="list-group-item list-group-item-action py-2 ripple"
                         ><i className="fas fa-clipboard fa-fw me-3"></i><span>Work</span><span className="float-end">0</span></NavLink
