@@ -1,9 +1,9 @@
 import Modal from "react-bootstrap/Modal"
 import './style.css'
 import { useSelector } from 'react-redux'
-import { useDarkMode } from '../../hooks/useDarkMode'
 import { ErrorMessage, Field, Form, Formik } from "formik"
 import { initailValues, schema } from '../../validators/category'
+import { RootState } from "../../state/store"
 
 type propsType = {
     show: boolean,
@@ -11,8 +11,7 @@ type propsType = {
 }
 
 function NewCatModal({ show, handleClose }: propsType) {
-    useSelector((state: any) => state.theme.value)
-    const getCookie = useDarkMode('dark')
+    const darkTheme = useSelector((state: RootState) => state.theme.value)
 
     const onSubmit = (values: any) => {
         console.log(values)
@@ -23,7 +22,7 @@ function NewCatModal({ show, handleClose }: propsType) {
             onHide={handleClose}
             backdrop="static"
             keyboard={false}
-            className={`${getCookie ? 'dark' : 'light'}`}
+            className={`${darkTheme ? 'dark' : 'light'}`}
         >
             <Modal.Header className="modal-header border-0">
                 <Modal.Title>New note catagory</Modal.Title>

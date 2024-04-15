@@ -1,11 +1,9 @@
 import {createSlice} from '@reduxjs/toolkit'
-import { useDarkMode } from '../hooks/useDarkMode';
-
-const getCookie = useDarkMode('dark')
+import { getCookie } from '../../helpers/getCookieValue';
 
 export const darkModeSlice = createSlice({
     name: 'theme', 
-    initialState: {value: getCookie ?? false},
+    initialState: {value: getCookie('dark') ?? false},
     reducers: {
         changeTheme: (state) => {
             document.cookie = 'dark='+(state.value = !state.value);

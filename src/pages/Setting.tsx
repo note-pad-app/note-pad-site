@@ -1,17 +1,14 @@
 import TitleBar from "../components/titlebar"
-import { useDispatch } from "react-redux"
-import { changeTheme } from "../slices/DarkMode"
-import { useDarkMode } from '../hooks/useDarkMode'
+import { useDispatch, useSelector } from "react-redux"
+import { changeTheme } from "../state/slices/DarkMode"
 import { useState } from "react";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import { initailValues, schema } from '../validators/changepassword'
+import { AppDispatch } from "../state/store";
 
 function Setting() {
-  const theme = useDispatch();
-  const getCookie = useDarkMode('dark');
-  const changeThemeColor = () => {
-    theme(changeTheme())
-  }
+  const darkTheme = useSelector((state: any) => state.theme.value)
+  const dispatch = useDispatch<AppDispatch>();
 
   const [show, setshow] = useState(false)
   const onSubmit = (values: Object) => {
@@ -27,7 +24,7 @@ function Setting() {
           Dark Mode
         </label>
         <div className='form-check form-switch'>
-          <input type="checkbox" id="dark-mode" onChange={changeThemeColor} checked={getCookie} className='form-check-input m-3 fs-4' />
+          <input type="checkbox" id="dark-mode" onChange={()=> dispatch(changeTheme())} checked={darkTheme} className='form-check-input m-3 fs-4' />
         </div>
       </div>
       <div className="settings mt-3 shadow-sm p-4 bg-white w-100 rounded">

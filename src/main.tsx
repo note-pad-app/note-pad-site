@@ -5,18 +5,10 @@ import App from './App'
 import "./styles/icons/css/all.css"
 import "bootstrap/dist/css/bootstrap.min.css"
 import "./styles/global.css"
-import { configureStore } from '@reduxjs/toolkit'
 import { Provider } from 'react-redux'
-import darkModeReducer from './slices/DarkMode'
-import { QueryClient, QueryClientProvider } from 'react-query'
-
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import {store} from './state/store'
 const queryClient = new QueryClient();
-
-const store = configureStore({
-  reducer: {
-    theme: darkModeReducer
-  }
-})
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
