@@ -1,18 +1,16 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik'
-import { Link } from 'react-router-dom'
-import {initailValues, schema} from '../validators/login'
-import { useDispatch } from 'react-redux'
+import { initailValues, schema } from '../validators/changepassword'
 import { useMutation } from '@tanstack/react-query'
 import * as api from '../api'
-import { setAuthToken } from '../state/slices/auth'
+import { useSearchParams } from 'react-router-dom'
 
-function Login() {
-    const dispatch = useDispatch()
+function ResetPassword() {
+    const [searchParams] = useSearchParams()
+
     const mutation = useMutation({
-        mutationFn: api.auth.login,
-        onSuccess: (data)=>{
-            dispatch(setAuthToken(data.data.token))
-            document.cookie = "token="+data.data.token
+        mutationFn: api.auth.resetPassword,
+        onSuccess: (data) => {
+            console.log(data)
         },
         onError(error, variables, context) {
             console.log(error)
@@ -20,7 +18,13 @@ function Login() {
     })
 
     const onSubmit = (values: any) => {
-        mutation.mutate(values)        
+        const new_values = {
+            user_id: searchParams.get('user_id'),
+            token: searchParams.get('token'),
+            password: values.password
+        }
+        
+        mutation.mutate(new_values)        
     }
 
     return (
@@ -34,25 +38,19 @@ function Login() {
                 >
                     <Form>
                         <div className='mt-2 d-flex justify-content-start align-items-center'>
-                            <Field type="text" name="uids" placeholder='username/email' className='form-control' />
-                        </div>
-                        <div className='mx-5 mt-2 text-danger text-center'>
-                            <ErrorMessage name="uids" />
-                        </div>
-                        <div className='mt-3 d-flex justify-content-start align-items-center'>
-                            <Field type="password" name="password" placeholder='password' className='form-control' />
+                            <Field type="password" name="password" placeholder='new password' className='form-control' />
                         </div>
                         <div className='mx-5 mt-2 text-danger text-center'>
                             <ErrorMessage name="password" />
                         </div>
+                        <div className='mt-3 d-flex justify-content-start align-items-center'>
+                            <Field type="password" name="confirm" placeholder='retype password' className='form-control' />
+                        </div>
+                        <div className='mx-5 mt-2 text-danger text-center'>
+                            <ErrorMessage name="confirm" />
+                        </div>
                         <div className="text-center">
-                            <button type="submit" className='btn btn-primary text-white mt-2 px-4'>LOGIN</button>
-                        </div>
-                        <div className='text-center mt-4'>
-                            <Link to="/forgot-password" className="text-info text-center fs-6 p-3">forget your password?</Link>
-                        </div>
-                        <div className='text-center mt-4'>
-                            <Link to="/signup" className="text-info text-center fs-5 p-3">don't have acount</Link>
+                            <button type="submit" className='btn btn-primary text-white mt-2 px-4'>Reset</button>
                         </div>
                     </Form>
                 </Formik>
@@ -61,4 +59,4 @@ function Login() {
     )
 }
 
-export default Login
+export default ResetPassword

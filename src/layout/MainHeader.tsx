@@ -3,10 +3,31 @@ import { Link, Outlet } from 'react-router-dom'
 import DropDown from 'react-bootstrap/Dropdown'
 import { useLocation } from 'react-router-dom'
 import logo from '/logo.png'
+import { clearAuthToken } from '../state/slices/auth'
+import { useDispatch, useSelector } from 'react-redux'
+import * as api from '../api'
+import { useMutation, useQuery } from '@tanstack/react-query'
+import { logout } from '../api/auth'
+import { RootState } from '../state/store'
 
 const MainHeader = () => {
     const location = useLocation();
     const [open, setOpen] = useState(false)
+    // const dispatch = useDispatch()
+    // const token = useSelector((state: RootState) => state.auth.token)
+
+    const logoutquery = useMutation({
+        mutationFn: api.auth.logout,
+        onSuccess: () => {
+            document.cookie = "token=;"
+        }
+    })
+
+    const logout = () => {
+        logoutquery.mutate()
+        // dispatch(clearAuthToken())
+    }
+
     return (
         <>
             <header>
@@ -27,9 +48,9 @@ const MainHeader = () => {
                         }
                         <div className='d-flex align-items-center m-0'>
                             <Link className="navbar-brand p-0 m-0 me-2" to="/">
-                                <img src={logo} alt="logo" className='logo'/>
+                                <img src={logo} alt="logo" className='logo' />
                             </Link>
-                            <Link className="navbar-brand p-0 nav-item m-0 me-2" style={{color: 'red !important'}} to="/notes">
+                            <Link className="navbar-brand p-0 nav-item m-0 me-2" style={{ color: 'red !important' }} to="/notes">
                                 Notes
                             </Link>
                             <Link className="navbar-brand p-0 nav-item m-0" to="/todos">
@@ -49,7 +70,7 @@ const MainHeader = () => {
                                     id="profile_dropdown"
                                     className='border-0'
                                 >
-                                    <img src="logo.png" alt="profile" width='35' height='35'/>
+                                    <img src="logo.png" alt="profile" width='35' height='35' />
                                 </DropDown.Toggle>
                                 <DropDown.Menu>
                                     <DropDown.Item>
@@ -58,9 +79,7 @@ const MainHeader = () => {
                                     <DropDown.Item>
                                         <Link className="text-decoration-none text-black d-block" to="settings">Settings</Link>
                                     </DropDown.Item>
-                                    <DropDown.Item>
-                                        <Link className="text-decoration-none text-black d-block" to="">Logout</Link>
-                                    </DropDown.Item>
+                                    <button className="text-primary ps-3 pt-1 border-0 bg-transparent p-0" onClick={logout}>Logout</button>
                                 </DropDown.Menu>
                             </DropDown>
                         </ul>

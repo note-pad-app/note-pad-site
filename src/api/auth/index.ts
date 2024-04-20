@@ -1,6 +1,22 @@
-import {api} from '../index'
+import { api } from '../index'
 
-// getting data
-export const getNotes = () => api.get('notes').then(res=> console.log(res)).catch(er=> console.log(er))
-// user registeration 
-export const register = (data: JSON) => api.post('register', data).then(res=> console.log(res.data)).catch(er=> console.log(er))
+export const signup = async (userdata: object) => {
+    return await api().post('api/auth/register', userdata);
+}
+
+export const login = async (userdata: object) => {
+    return await api().post('api/auth/login', userdata);
+}
+
+export const logout = async () => {
+    return await api().post('api/auth/logout');
+}
+
+export const forgotPassword = async (data: object) => {
+    return await api().post('api/auth/forgot-password', data);
+}
+
+export const resetPassword = async (data: object) => {
+    return await api().post('api/auth/reset-password', data);
+}
+

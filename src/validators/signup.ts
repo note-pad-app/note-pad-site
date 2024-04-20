@@ -1,7 +1,8 @@
 import * as yup from 'yup'
 
-const initailValues = { username: '', email: '', password: '', confirm: '' };
+const initailValues = { fullname: '', username: '', email: '', password: '', confirm: '' };
 const schema = yup.object({
+    fullname: yup.string().required().min(4),
     username: yup.string().required().min(3),
     email: yup.string().required().min(3).email(),
     password: yup.string().required().min(4),

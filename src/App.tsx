@@ -20,6 +20,8 @@ import Profile from "./pages/Profile"
 import Login from "./pages/Login"
 import SignUp from "./pages/SignUp"
 import Addtodo from "./pages/Addtodo"
+import ResetPassword from "./pages/ResetPassword"
+import ForgotPassword from "./pages/ForgotPassword"
 import { useSelector } from 'react-redux'
 import { RootState } from "./state/store"
 
@@ -53,6 +55,8 @@ function App() {
         </Route>
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<SignUp />} />
+        <Route path="reset-password" element={<ResetPassword />} />
+        <Route path="forgot-password" element={<ForgotPassword />} />
         <Route path="*" element={<Notfound />} />
       </Routes>
     </div>
