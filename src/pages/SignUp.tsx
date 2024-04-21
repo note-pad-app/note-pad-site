@@ -1,5 +1,5 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik'
-import { Link } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom'
 import { initailValues, schema } from '../validators/signup'
 import { useMutation } from '@tanstack/react-query'
 import * as api from '../api'
@@ -21,6 +21,10 @@ function SignUp() {
 
     const onSubmit = (values: any) => {
         mutation.mutate(values)        
+    }
+
+    if(mutation.isSuccess){
+        return <Navigate to="/" />
     }
 
     return (

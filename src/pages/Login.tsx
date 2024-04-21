@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux'
 import { useMutation } from '@tanstack/react-query'
 import * as api from '../api'
 import { setAuthToken } from '../state/slices/auth'
+import  {Navigate}  from 'react-router-dom'
 
 function Login() {
     const dispatch = useDispatch()
@@ -12,7 +13,6 @@ function Login() {
         mutationFn: api.auth.login,
         onSuccess: (data)=>{
             dispatch(setAuthToken(data.data.token))
-            document.cookie = "token="+data.data.token
         },
         onError(error, variables, context) {
             console.log(error)
@@ -20,8 +20,12 @@ function Login() {
     })
 
     const onSubmit = (values: any) => {
-        mutation.mutate(values)        
+        mutation.mutate(values)       
     }
+
+    if(mutation.isSuccess){
+        return <Navigate to="/" />
+    } 
 
     return (
         <div className='container'>

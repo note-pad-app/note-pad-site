@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link, Outlet } from 'react-router-dom'
+import { Link, Navigate, Outlet } from 'react-router-dom'
 import DropDown from 'react-bootstrap/Dropdown'
 import { useLocation } from 'react-router-dom'
 import logo from '/logo.png'
@@ -8,24 +8,25 @@ import { useDispatch, useSelector } from 'react-redux'
 import * as api from '../api'
 import { useMutation, useQuery } from '@tanstack/react-query'
 import { logout } from '../api/auth'
-import { RootState } from '../state/store'
 
 const MainHeader = () => {
     const location = useLocation();
     const [open, setOpen] = useState(false)
-    // const dispatch = useDispatch()
-    // const token = useSelector((state: RootState) => state.auth.token)
+    const dispatch = useDispatch()
 
     const logoutquery = useMutation({
         mutationFn: api.auth.logout,
         onSuccess: () => {
-            document.cookie = "token=;"
+            dispatch(clearAuthToken())
         }
     })
 
-    const logout = () => {
+    const logoutfn = () => {
         logoutquery.mutate()
-        // dispatch(clearAuthToken())
+    }
+
+    if(logoutquery.isSuccess){
+        return <Navigate to="/login" />
     }
 
     return (
@@ -79,7 +80,7 @@ const MainHeader = () => {
                                     <DropDown.Item>
                                         <Link className="text-decoration-none text-black d-block" to="settings">Settings</Link>
                                     </DropDown.Item>
-                                    <button className="text-primary ps-3 pt-1 border-0 bg-transparent p-0" onClick={logout}>Logout</button>
+                                    <button className="text-primary ps-3 pt-1 border-0 bg-transparent p-0" onClick={logoutfn}>Logout</button>
                                 </DropDown.Menu>
                             </DropDown>
                         </ul>
