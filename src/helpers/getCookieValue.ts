@@ -1,6 +1,6 @@
 let cookie = "";
 
-export function getCookie(cname: string, bool: boolean) {
+export function getCookie(cname: string) {
   let name = cname + "=";
   let decodedCookie = decodeURIComponent(document.cookie);
   let ca = decodedCookie.split(';');
@@ -14,11 +14,7 @@ export function getCookie(cname: string, bool: boolean) {
     }
   }
   try {
-    if(bool){
       return JSON.parse(cookie)
-    }else{
-      return cookie
-    }
   } catch (e) {
     console.log(e)
   }
