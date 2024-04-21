@@ -60,7 +60,7 @@ label {
 .dark .sidebar span, 
 .dark .catagory-header h6,
 .dark .navbar i,
-.dark .navbar button,
+.dark .navbar button:not(.logout-btn),
 .dark p,
 .dark .todocard span,
 .dark .card p,
@@ -83,7 +83,7 @@ label {
 .dark .profile button,
 .dark .profile h1,
 .dark .login-card i,
-.dark .signup-card i{
+.dark .signup-card i {
   color: var(--light) !important;
 }
 

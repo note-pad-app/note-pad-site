@@ -80,7 +80,7 @@ const MainHeader = () => {
                                     <DropDown.Item>
                                         <Link className="text-decoration-none text-black d-block" to="settings">Settings</Link>
                                     </DropDown.Item>
-                                    <button className="text-primary ps-3 pt-1 border-0 bg-transparent p-0" onClick={logoutfn}>Logout</button>
+                                    <button className="logout-btn text-primary ps-3 pt-1 border-0 bg-transparent p-0" onClick={logoutfn}>Logout</button>
                                 </DropDown.Menu>
                             </DropDown>
                         </ul>
