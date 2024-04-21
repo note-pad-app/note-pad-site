@@ -24,6 +24,7 @@ import ResetPassword from "./pages/ResetPassword"
 import ForgotPassword from "./pages/ForgotPassword"
 import { useSelector } from 'react-redux'
 import { RootState } from "./state/store"
+import ProtectedRoutes from "./pages/protectedRoutes"
 
 function App() {
   const darkTheme = useSelector((state: RootState) => state.theme.value)
@@ -31,6 +32,7 @@ function App() {
   return (
     <div className={`${darkTheme? 'dark' : 'light'}`}>
       <Routes>
+        <Route element={<ProtectedRoutes />}>
         <Route path="/" element={<MainHeader />}>
           <Route index element={<Home />} />
           <Route path="notes" element={<NoteSidebar />}>
@@ -52,6 +54,7 @@ function App() {
           </Route>
           <Route path="settings" element={<Setting />} />
           <Route path="profile" element={<Profile />} />
+          </Route>
         </Route>
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<SignUp />} />
