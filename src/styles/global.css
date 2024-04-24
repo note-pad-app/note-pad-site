@@ -57,7 +57,7 @@ label {
 
 /* light */
 .dark .sidebar .list i,
-.dark .sidebar span, 
+.dark .sidebar span:not(.new), 
 .dark .catagory-header h6,
 .dark .navbar i,
 .dark .navbar button:not(.logout-btn),
@@ -70,7 +70,6 @@ label {
 .dark .view-titlebar p,
 .dark .view-todo i,
 .dark .view-todo input,
-.dark .view-todo input::placeholder,
 .dark .view-todo button,
 .dark .view-todo span,
 .dark .view-note button,
@@ -86,6 +85,11 @@ label {
 .dark .signup-card i {
   color: var(--light) !important;
 }
+
+.dark .view-todo input::placeholder{
+  color: #ccc !important;
+}
+
 
 /* dark */
 .dark nav{

@@ -55,7 +55,7 @@ function Sidebar() {
                         ><i className="fas fa-clipboard-check fa-fw me-3"></i><span>No catagory</span><span className="float-end">0</span>
                         </NavLink>
                         <button onClick={handleShow} className="border-0 bg-white text-primary py-2 ripple text-decoration-none text-start"
-                        ><span className="ms-5">New</span></button>
+                        ><span className="ms-5 new">New</span></button>
                         <div className="seperator bg-primary"></div>
                         <NavLink to="/settings" className="list-group-item list-group-item-action py-2 ripple"
                         ><i className="fas fa-gear fa-fw me-3"></i><span>Settings</span></NavLink

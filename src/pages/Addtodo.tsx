@@ -1,10 +1,31 @@
 import { ErrorMessage, Formik, Field, Form } from "formik"
 import { initailValues, schema } from '../validators/todo'
+import { useMutation, useQuery } from "@tanstack/react-query"
+import * as api from '../api';
+import { Category } from "../Types/categoryTypes";
+import Loading from "../components/Loading";
 
 function Addtodo() {
+
+  const { data, isSuccess } = useQuery({
+    queryKey: ['categorySelect', 'todo'],
+    queryFn: ({ queryKey }) => api.category.getAll(queryKey[1]),
+  })
+
+  const mutation = useMutation({
+    mutationFn: api.todo.store,
+    onSuccess: (data) => {
+      console.log(data)
+    },
+    onError: (error) => {
+      console.log(error)
+    }
+  })
+
   const onSubmit = (values: Object) => {
-    console.log(values)
+    mutation.mutate(values)
   }
+
   return (
     <main>
       <Formik
@@ -17,12 +38,15 @@ function Addtodo() {
             <div className="view-titlebar d-flex justify-content-between align-items-center">
               <div className='d-flex justify-content-start align-items-center'>
                 <i className="fas fa-clipboard-check fs-4 m-2"></i>
-                <Field as="select" name="category" id="" className='form-select form-select-sm border-0'>
+                <Field as="select" name="categoryId" id="" className='form-select form-select-sm border-0'>
                   <option selected>No catagory</option>
-                  <option value="work">work</option>
-                  <option value="personal">personal</option>
-                  <option value="life">life</option>
-                  <option value="home">home</option>
+                  {
+                    isSuccess && data.data.data.map((category: Category) => {
+                      return (
+                        <option value={category.id}>{category.name}</option>
+                      )
+                    })
+                  }
                 </Field>
               </div>
             </div>
@@ -47,7 +71,7 @@ function Addtodo() {
                   <span>Mark as important</span>
                 </div>
                 <div className='form-check form-switch'>
-                  <Field type="checkbox" name="important" className='form-check-input m-3 fs-4' />
+                  <Field type="checkbox" name="is_important" className='form-check-input m-3 fs-4' />
                 </div>
               </div>
               <div className='d-flex justify-content-start align-items-center border-bottom mt-2'>
@@ -56,7 +80,9 @@ function Addtodo() {
                   <Field type="text" name="remarks" placeholder='Remarks' className='w-100 border-0 px-2 py-2' style={{ outline: 'none' }} />
                 </div>
               </div>
-              <button type="submit" className='btn mt-3 btn-primary rounded-3 px-4 py-2 shadow-sm'>Add</button>
+              <button type="submit" className='btn mt-3 btn-primary rounded-3 px-4 py-2 shadow-sm'>
+                {mutation.isPending?<Loading />:'Add'}
+              </button>
             </div>
           </div>
         </Form>

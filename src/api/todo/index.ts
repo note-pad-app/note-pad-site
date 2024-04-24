@@ -1,6 +1,21 @@
-import {api} from '../index'
+import { Api } from '../Api'
 
-// getting data
-export const getNotes = () => api.get('notes').then(res=> console.log(res)).catch(er=> console.log(er))
-// user registeration 
-export const register = (data: JSON) => api.post('register', data).then(res=> console.log(res.data)).catch(er=> console.log(er))
+export const store = async (data: object) => {
+    return await Api().post('api/todos', data);
+}
+
+export const getAll = async () => {
+    return await Api().get(`api/todo`);
+}
+
+export const update = async ({ id, ...data }) => {
+    return await Api().put(`api/todos/${id}`, data);
+}
+
+export const show = async (id: number) => {
+    return await Api().get(`api/todos/${id}`);
+}
+
+export const remove = async (id: number) => {
+    return await Api().delete(`api/todos/${id}`);
+}
