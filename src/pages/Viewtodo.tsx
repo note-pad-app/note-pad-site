@@ -1,9 +1,15 @@
 import { ErrorMessage, Formik, Field, Form } from "formik"
 import { initailValues, schema } from '../validators/updateTodo'
+import { useSearchParams } from "react-router-dom"
 
 function Addtodo() {
+  const [searchParams] = useSearchParams()
+
   const onSubmit = (values: Object) => {
-    console.log(values)
+    // console.log(values)
+    for(const x of searchParams.entries()){
+      console.log(x)
+    }
   }
   return (
     <main>
