@@ -24,36 +24,36 @@ import ResetPassword from "./pages/ResetPassword"
 import ForgotPassword from "./pages/ForgotPassword"
 import { useSelector } from 'react-redux'
 import { RootState } from "./state/store"
-import ProtectedRoutes from "./pages/protectedRoutes"
+import ProtectedRoutes from "./pages/ProtectedRoutes"
 
 function App() {
   const darkTheme = useSelector((state: RootState) => state.theme.value)
 
   return (
-    <div className={`${darkTheme? 'dark' : 'light'}`}>
+    <div className={`${darkTheme ? 'dark' : 'light'}`}>
       <Routes>
         <Route element={<ProtectedRoutes />}>
-        <Route path="/" element={<MainHeader />}>
-          <Route index element={<Home />} />
-          <Route path="notes" element={<NoteSidebar />}>
-            <Route index element={<Allnotes />} />
-            <Route path=":catg" element={<Allnotes />} />
-            <Route path="note/:id" element={<Viewnote />} />
-            <Route path="deletedNotes" element={<Delnotes />} />
-            <Route path="addNote" element={<Addnote />} />
-            <Route path="editNoteCats" element={<EditNoteCats />} />
-            <Route path="favNotes" element={<Favnotes />} />
-          </Route>
-          <Route path="/todos" element={<TodoSidbar />}>
-            <Route index element={<Alltodos />} />
-            <Route path=":catg" element={<Alltodos />} />
-            <Route path="todo/:id" element={<Viewtodo />} />
-            <Route path="deletedTodos" element={<Deltodos />} />
-            <Route path="editTodoCats" element={<EditTodoCats />} />
-            <Route path="addTodo" element={<Addtodo />} />
-          </Route>
-          <Route path="settings" element={<Setting />} />
-          <Route path="profile" element={<Profile />} />
+          <Route path="/" element={<MainHeader />}>
+            <Route index element={<Home />} />
+            <Route path="notes" element={<NoteSidebar />}>
+              <Route index element={<Allnotes />} />
+              <Route path=":catg" element={<Allnotes />} />
+              <Route path="note/:id" element={<Viewnote />} />
+              <Route path="deletedNotes" element={<Delnotes />} />
+              <Route path="addNote" element={<Addnote />} />
+              <Route path="editNoteCats" element={<EditNoteCats />} />
+              <Route path="favNotes" element={<Favnotes />} />
+            </Route>
+            <Route path="/todos" element={<TodoSidbar />}>
+              <Route index element={<Alltodos />} />
+              <Route path=":catg" element={<Alltodos />} />
+              <Route path="todo/:id" element={<Viewtodo />} />
+              <Route path="deletedTodos" element={<Deltodos />} />
+              <Route path="editTodoCats" element={<EditTodoCats />} />
+              <Route path="addTodo" element={<Addtodo />} />
+            </Route>
+            <Route path="settings" element={<Setting />} />
+            <Route path="profile" element={<Profile />} />
           </Route>
         </Route>
         <Route path="login" element={<Login />} />

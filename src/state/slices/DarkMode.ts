@@ -5,7 +5,7 @@ interface DarkState {
 }
 export const darkModeSlice = createSlice({
     name: 'theme', 
-    initialState: <DarkState>{value: getCookie('dark') ?? false},
+    initialState: <DarkState>{value: getCookie('dark', true) ?? false},
     reducers: {
         changeTheme: (state) => {
             document.cookie = 'dark='+(state.value = !state.value);

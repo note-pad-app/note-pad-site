@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { getCookie } from '../../helpers/getCookieValue';
 
 interface AuthState {
   token: string | null;
@@ -6,8 +7,8 @@ interface AuthState {
 }
 
 const initialState: AuthState = {
-  token: null,
-  isAuthenticated: false,
+  token: getCookie('token', false),
+  isAuthenticated: !!getCookie('token', false),
 };
 
 const authSlice = createSlice({
@@ -15,11 +16,12 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     setAuthToken: (state, action: PayloadAction<string | null>) => {
-      state.token = action.payload;
+      document.cookie = 'token='+(state.token = action.payload)+";path=/";
       state.isAuthenticated = !!action.payload;
     },
     clearAuthToken: (state) => {
-      state.token = null;
+      document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/"
+      state.token = null
       state.isAuthenticated = false;
     },
   },

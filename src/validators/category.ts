@@ -1,11 +1,11 @@
 import * as yup from 'yup'
 
 const initailValues = {
-    category: '',
+    name: '',
 };
 
 const schema = yup.object({
-    category: yup.string().required(),
+    name: yup.string().required(),
 })
 
 export { initailValues, schema }

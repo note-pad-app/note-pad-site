@@ -7,7 +7,7 @@ import { clearAuthToken } from '../state/slices/auth'
 import { useDispatch, useSelector } from 'react-redux'
 import * as api from '../api'
 import { useMutation, useQuery } from '@tanstack/react-query'
-import { logout } from '../api/auth'
+
 
 const MainHeader = () => {
     const location = useLocation();

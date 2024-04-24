@@ -20,3 +20,7 @@ export const resetPassword = async (data: object) => {
     return await Api().post('api/auth/reset-password', data);
 }
 
+export const userInfo = async () => {
+    return await Api().get('api/auth/info');
+}
+

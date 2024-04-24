@@ -5,6 +5,7 @@ import { useMutation } from '@tanstack/react-query'
 import * as api from '../api'
 import { setAuthToken } from '../state/slices/auth'
 import { useDispatch, useSelector } from 'react-redux'
+import Loading  from '../components/Loading'
 
 function SignUp() {
     
@@ -69,7 +70,7 @@ function SignUp() {
                         </div>
                         <div className="text-center mt-3">
                             <button type="submit" className='btn btn-primary text-white mt-3 px-4 align-self-center'>
-                                Sign Up
+                                {mutation.isPending?<Loading />: 'Sign Up'}
                             </button>
                         </div>
                         <div className='text-center mt-4'>

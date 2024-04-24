@@ -6,6 +6,7 @@ import { useMutation } from '@tanstack/react-query'
 import * as api from '../api'
 import { setAuthToken } from '../state/slices/auth'
 import  {Navigate}  from 'react-router-dom'
+import Loading from '../components/Loading'
 
 function Login() {
     const dispatch = useDispatch()
@@ -50,7 +51,9 @@ function Login() {
                             <ErrorMessage name="password" />
                         </div>
                         <div className="text-center">
-                            <button type="submit" className='btn btn-primary text-white mt-2 px-4'>LOGIN</button>
+                            <button type="submit" className='btn btn-primary text-white mt-2 px-4'>
+                                {mutation.isPending?<Loading />: 'LOGIN'}
+                            </button>
                         </div>
                         <div className='text-center mt-4'>
                             <Link to="/forgot-password" className="text-info text-center fs-6 p-3">forget your password?</Link>
