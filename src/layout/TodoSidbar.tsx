@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { NavLink, Link, Outlet, useOutletContext } from 'react-router-dom'
-import NewCatModal from '../components/CategoryModal'
+import CategoryModal from '../components/CategoryModal'
 import { useQuery } from '@tanstack/react-query';
 import * as api from '../api';
 import { Category } from '../Types/categoryTypes'
@@ -9,16 +9,19 @@ function Sidebar() {
     const { open } = useOutletContext<any>();
     const [show, setShow] = useState(false);
     const handleShow = () => setShow(!show)
-    const handleClose = () => setShow(!show)
+    const handleClose = () =>{
+        setShow(!show)
+        refetch()
+    } 
 
-    const { data, isSuccess, isError } = useQuery({
+    const { data, isSuccess, isError, refetch } = useQuery({
         queryKey: ['category', 'todo'],
         queryFn: ({ queryKey }) => api.category.getAll(queryKey[1]),
     })
 
     return (
         <>
-            <NewCatModal show={show} handleClose={handleClose} type="todo" />
+            <CategoryModal show={show} handleClose={handleClose} type="todo" />
             <nav id="sidebarMenu" className={`collapse d-lg-block ${open ? 'd-block' : ''} sidebar bg-white overflow-auto`}>
                 <div className="position-sticky">
                     <div className="list-group list-group-flush mx-3 mb-4 mt-2 list">
