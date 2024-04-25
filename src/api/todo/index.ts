@@ -12,7 +12,7 @@ export const update = async ({ id, ...data }) => {
     return await Api().put(`api/todos/${id}`, data);
 }
 
-export const show = async (id: number) => {
+export const show = async (id: string) => {
     return await Api().get(`api/todos/${id}`);
 }
 

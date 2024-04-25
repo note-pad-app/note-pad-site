@@ -88,7 +88,7 @@ function TodoCard({ todo, check, deleted, id, isCompleted, inValidate}: paramTyp
                     className="form-check-input m-3"
                 />
             ) : null}
-            <Link to={"/todos/"+id} style={{pointerEvents: deleted?'none': 'auto'}} className="text-decoration-none w-100 text-start d-flex align-items-center">
+            <Link to={"/todos/todo/"+id} style={{pointerEvents: deleted?'none': 'auto'}} className="text-decoration-none w-100 text-start d-flex align-items-center">
                 <span className="text-black">{todo.length > 100 ? todo.slice(0, 100) + '...' : todo}</span>
             </Link>
             {

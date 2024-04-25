@@ -4,15 +4,10 @@ import TodoCard from "../components/todoCard"
 import { useQuery, useQueryClient } from "@tanstack/react-query"
 import * as api from '../api';
 import { Todo } from "../Types/todoTypes";
-import { useEffect } from "react";
-import { useSearchParams } from "react-router-dom";
 
 function Alltodos() {
   const queryClient = useQueryClient();
-  const [searchParams] = useSearchParams()
-useEffect(()=>{
-  console.log(searchParams.get('catg'))
-})
+
   const { data, isSuccess } = useQuery({
     queryKey: ['todo', 'all'],
     queryFn: ()=> api.todo.getAll(),
