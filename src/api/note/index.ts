@@ -8,6 +8,10 @@ export const getAll = async (is_deleted='0') => {
     return await Api().get(`api/notes?filters=["is_deleted:${is_deleted}:="]`);
 }
 
+export const getFavs = async () => {
+    return await Api().get(`api/notes?filters=["is_favorite:1:="]`);
+}
+
 export const update = async ({ id, ...data }) => {
     return await Api().put(`api/notes/${id}`, data);
 }

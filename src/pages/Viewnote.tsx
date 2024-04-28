@@ -1,14 +1,55 @@
 import { useState } from 'react';
 import CkEditor from '../components/ckeditor'
 import { Field, Form, Formik } from 'formik';
-import { initailValues, schema } from '../validators/updateNote'
+import { schema } from '../validators/updateNote'
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import { useParams } from 'react-router';
+import { useMutation, useQuery } from '@tanstack/react-query';
+import * as api from '../api';
+import { Note } from '../Types/noteTypes';
+import { Category } from '../Types/categoryTypes';
+import Loading from '../components/Loading';
+
+type initType = {
+  note: string,
+  category_id: number
+}
 
 function Viewnote() {
+  const { id } = useParams()
   const [edit, setedit] = useState(false)
-  const onSubmit = (values: any) => {
-    console.log(values)
+
+  const updateMutation = useMutation({
+    mutationFn: api.note.update,
+    onSuccess: (data)=>{
+      console.log(data)
+    },
+    onError: (data)=>{
+      console.log(data)
+    }
+  })
+
+  const { data, isSuccess } = useQuery({
+    queryKey: ['note', 'single'],
+    queryFn: () => api.note.show(id as string)
+  })
+
+  const categories = useQuery({
+    queryKey: ['categorySelect', 'note'],
+    queryFn: ({ queryKey }) => api.category.getAll(queryKey[1]),
+  })
+
+  const onSubmit = (values: object) => {
+    updateMutation.mutate({id, ...values})
+
+    // console.log(values)
   }
+
+  const initailValues: initType = {
+    note: data?.data.note,
+    category_id: data?.data.categoryId
+  }
+
   return (
     <main>
       <div className="container pt-4 view-note">
@@ -23,12 +64,15 @@ function Viewnote() {
                 <div className=" d-flex justify-content-between align-items-center">
                   <div className='d-flex justify-content-start align-items-center'>
                     <i className="fas fa-clipboard fs-4 m-2"></i>
-                    <Field as="select" name="category" id="" className='form-select form-select-sm border-0'>
+                    <Field as="select" name="category_id" id="" className='form-select form-select-sm border-0'>
                       <option selected>No catagory</option>
-                      <option value="work">work</option>
-                      <option value="personal">personal</option>
-                      <option value="life">life</option>
-                      <option value="home">home</option>
+                      {
+                        isSuccess && categories.data?.data.data.map((category: Category) => {
+                          return (
+                            <option value={category.id ?? ''}>{category.name}</option>
+                          )
+                        })
+                      }
                     </Field>
                   </div>
                   <p>{new Date().toDateString()}</p>
@@ -47,20 +91,22 @@ function Viewnote() {
                     }}
                   ></Field>
                 </div>
-                <button type="submit" className='btn mt-3 btn-success rounded-3 px-4 py-2 shadow-sm'>Save</button>
+                <button type="submit" className='btn mt-3 btn-success rounded-3 px-4 py-2 shadow-sm'>
+                  {
+                    updateMutation.isPending ? <Loading /> : 'Save'
+                  }
+                </button>
               </Form>
             </Formik>
             : <div>
               <div>
                 <div className="view-titlebar d-flex justify-content-between align-items-center">
                   <div className='d-flex justify-content-start align-items-center'>
-                    <h2 className='fs-4 text-info'>Work</h2>
+                    <h2 className='fs-4 text-info'>{data?.data.category ? data?.data.category.name : ''}</h2>
                   </div>
-                  <p>{new Date().toDateString()}</p>
+                  <p>{new Date(data?.data.createdAt).toDateString()}</p>
                 </div>
-                <div className="mt-4 note-content">
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto similique blanditiis velit numquam suscipit minus magnam non adipisci nobis perferendis cupiditate explicabo quidem fuga, iure totam iste in nemo animi!
-                </div>
+                <div dangerouslySetInnerHTML={{ __html: data?.data.note }} className='parsedHtml note-content' />
                 <button onClick={() => setedit(true)} className='btn mt-3 btn-primary rounded-3 px-4 py-2 shadow-sm'>Edit</button></div>
             </div>
         }

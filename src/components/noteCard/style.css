@@ -13,19 +13,19 @@
     align-self: flex-end;
 }
 
-#heart {
+.heart {
     display: none;
 }
 
-#heart:checked~label {
+.heart:checked~label {
     color: red !important;
 }
 
-.dark #heart~label{
+.dark .heart~label{
     color: lightgray;
 }
 
-#heartlabel {
+.heartlabel {
     font-size: 1.8em;
     cursor: pointer;
 }

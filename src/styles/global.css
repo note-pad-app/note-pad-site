@@ -27,6 +27,10 @@ i, input[type=checkbox] {
   cursor: pointer;
 }
 
+.parsedHtml,.parsedHtml table {
+  color: #777 !important
+}
+
 /*------------------dark theme---------------------------------------- */
 
 /* darkgray */
@@ -82,7 +86,8 @@ label {
 .dark .profile button,
 .dark .profile h1,
 .dark .login-card i,
-.dark .signup-card i {
+.dark .signup-card i, 
+.dark .parsedHtml table{
   color: var(--light) !important;
 }
 
@@ -290,7 +295,7 @@ label {
   }
 
   .action-button,
-  #heart~label {
+  .heart~label {
     font-size: 1.2rem;
   }
 
