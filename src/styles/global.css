@@ -27,8 +27,20 @@ i, input[type=checkbox] {
   cursor: pointer;
 }
 
-.parsedHtml,.parsedHtml table {
-  color: #777 !important
+.parsedHtml,
+.parsedHtml table, 
+.parsedHtml ul, 
+.parsedHtml ol {
+  color: #777 !important;
+  border-color: #777 !important;;
+}
+
+.dark .parsedHtml,
+.dark .parsedHtml table,
+.dark .parsedHtml ul,
+.dark .parsedHtml ol {
+  color: #ccc !important;
+  border-color: #ccc !important;;
 }
 
 /*------------------dark theme---------------------------------------- */
