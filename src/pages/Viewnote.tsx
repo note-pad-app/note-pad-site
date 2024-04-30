@@ -6,7 +6,6 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { useParams } from 'react-router';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import * as api from '../api';
-import { Note } from '../Types/noteTypes';
 import { Category } from '../Types/categoryTypes';
 import Loading from '../components/Loading';
 
@@ -30,7 +29,7 @@ function Viewnote() {
   })
 
   const { data, isSuccess } = useQuery({
-    queryKey: ['note', 'single'],
+    queryKey: ['note', id],
     queryFn: () => api.note.show(id as string)
   })
 
@@ -41,8 +40,6 @@ function Viewnote() {
 
   const onSubmit = (values: object) => {
     updateMutation.mutate({id, ...values})
-
-    // console.log(values)
   }
 
   const initailValues: initType = {
@@ -69,7 +66,7 @@ function Viewnote() {
                       {
                         isSuccess && categories.data?.data.data.map((category: Category) => {
                           return (
-                            <option value={category.id ?? ''}>{category.name}</option>
+                            <option key={category.id} value={category.id ?? ''}>{category.name}</option>
                           )
                         })
                       }

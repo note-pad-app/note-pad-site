@@ -1,16 +1,59 @@
 import { ErrorMessage, Formik, Field, Form } from "formik"
 import { initailValues, schema } from '../validators/updateTodo'
-import { useSearchParams } from "react-router-dom"
+import { useParams, useSearchParams } from "react-router-dom"
+import * as api from '../api';
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { Category } from "../Types/categoryTypes";
+
+type initType = {
+  todo: string,
+  category_id: number,
+  reminder: Date,
+  remarks: string,
+  is_important: boolean
+}
 
 function Addtodo() {
-  const [searchParams] = useSearchParams()
+  const { id } = useParams()
 
-  const onSubmit = (values: Object) => {
-    // console.log(values)
-    for(const x of searchParams.entries()){
-      console.log(x)
+  const updateMutation = useMutation({
+    mutationFn: api.todo.update,
+    onSuccess: (data)=>{
+      console.log(data)
+    },
+    onError: (data)=>{
+      console.log(data)
     }
+  })
+
+  const { data, isSuccess } = useQuery({
+    queryKey: ['todo', id],
+    queryFn: () => api.todo.show(id as string),
+    enabled: !!id
+  })
+
+  const categories = useQuery({
+    queryKey: ['categorySelect', 'todo'],
+    queryFn: ({ queryKey }) => api.category.getAll(queryKey[1]),
+  })
+
+  if(isSuccess){
+    console.log(data.data)
   }
+
+  const onSubmit = (values: object) => {
+    // updateMutation.mutate({id, ...values})
+    console.log(values)
+  }
+
+  const initailValues: initType = {
+    todo: data?.data.todo,
+    category_id: data?.data.categoryId,
+    remarks: data?.data.remarks,
+    reminder: data?.data.reminder,
+    is_important: data?.data.isImportant
+  }
+
   return (
     <main>
       <Formik
@@ -23,12 +66,15 @@ function Addtodo() {
             <div className="view-titlebar d-flex justify-content-between align-items-center">
               <div className='d-flex justify-content-start align-items-center'>
                 <i className="fas fa-clipboard-check fs-4 m-2"></i>
-                <Field as="select" name="category" id="" className='form-select form-select-sm border-0'>
+                <Field as="select" name="category_id" id="" className='form-select form-select-sm border-0'>
                   <option selected>No catagory</option>
-                  <option value="work">work</option>
-                  <option value="personal">personal</option>
-                  <option value="life">life</option>
-                  <option value="home">home</option>
+                  {
+                    categories.isSuccess && categories.data.data.data.map((category: Category) => {
+                      return (
+                        <option key={category.id} value={category.id ?? ''}>{category.name ?? ''}</option>
+                      )
+                    })
+                  }
                 </Field>
               </div>
             </div>
@@ -53,7 +99,7 @@ function Addtodo() {
                   <span>Mark as important</span>
                 </div>
                 <div className='form-check form-switch'>
-                  <Field type="checkbox" name="important" className='form-check-input m-3 fs-4' />
+                  <Field type="checkbox" name="is_important" className='form-check-input m-3 fs-4' />
                 </div>
               </div>
               <div className='d-flex justify-content-start align-items-center border-bottom mt-2'>
